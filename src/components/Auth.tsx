@@ -3,6 +3,7 @@ import './Auth.css';
 
 function Auth() {
     return (
+      <>
         <div>
         <div className="background">
         <div className="shape"></div>
@@ -10,21 +11,16 @@ function Auth() {
       </div>
       
       <form>
-        <h3>Login Here</h3>
+        <h3>Verification</h3>
         <label htmlFor="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username"/>
+        <input type="text" placeholder="Login" id="username"/>
         <label htmlFor="password">Password</label>
         <input type="password" placeholder="Password" id="password"/>
         <button>Log In</button>
-        <div className="social">
-          <div className="go"><i className="fab fa-google"></i> Google</div>
-          <div className="fb"><i className="fab fa-facebook"></i> Facebook</div>
-        </div>
+        <button>Registration</button>
       </form>
-    
-      <script src="https://kit.fontawesome.com/95a02bd20d.js"></script>
       </div>
-      );
+      </>);
     }
 
 export default Auth
