@@ -1,5 +1,5 @@
 import React from 'react'
-import './Auth.css';
+import '../styles/Auth.css';
 
 function Auth() {
     return (
