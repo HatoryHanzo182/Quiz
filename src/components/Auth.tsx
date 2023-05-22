@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-import React from 'react'
-import '../styles/Auth.css';
-=======
 import React, { useState } from 'react';
-import './Auth.css';
->>>>>>> f7a80849b9d2f7194990dbd8d2d3909b6c408a1d
+import '../styles/Auth.css';
+
+
 
 function Auth() 
 {
