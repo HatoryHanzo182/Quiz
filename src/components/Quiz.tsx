@@ -6,7 +6,7 @@ import '../styles/quizstyle.css'
 const Quiz = () => {
     var Questionbank = [
         {
-            Question: "What is AAA?",
+            Question: "What is AAA abrjs jkljdf jlf jfl kwf lkf kofo kwofj jwehsi nvn fjkvnfjnsbv jdbfjsb jdbj bdj wsn wk mm m kdk k ?",
             Answers: [
                 { Answer: "AAA", isCorrect: true },
                 { Answer: "BBB", isCorrect: false },
@@ -81,7 +81,13 @@ const resetQuiz=()=>
 }
 
     return (
+        <>
+        <div className="background">
+        <div className="shape"></div>
+        <div className="shape"></div>
+      </div>
         <div className='app'>
+          
             {showScore ? (
                 <div className='score-section'>
                     You have scored {score} out of {Questionbank.length}
@@ -113,6 +119,7 @@ const resetQuiz=()=>
             }
 
         </div>
+        </>
     );
 }
 
