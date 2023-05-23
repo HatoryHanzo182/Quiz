@@ -3,8 +3,8 @@ import './App.css';
 import Auth from './components/Auth';
 import Quiz from './components/Quiz';
 
-function App() {
-
+function App() 
+{
   return (
     <Auth/>
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import '../styles/Auth.css';
+import Quiz from './Quiz';
 
 declare module 'bcryptjs';
 
@@ -35,6 +36,16 @@ function Auth()
     setShowRegistration(true);
   };
 
+  const handleLoginClick = async (event: any) =>
+  {
+    event.preventDefault();
+
+    fetch('http://localhost:3000/users').then(response => response.json()).then(data => 
+    { 
+      checkLoginAndPassword(data); 
+    }).catch(error => console.error('Error while getting data:', error));
+  }
+
   const handleRegistrationClick = async (event: any) => 
   {
     event.preventDefault();
@@ -59,7 +70,30 @@ function Auth()
     }
   };
 
-  // Validity.
+  // Login authentication.
+  //================================================================================================
+  function checkLoginAndPassword(data: any[]) 
+  {
+    const user = data.find(item => item.login === login);
+  
+    if (user) 
+    {
+      if (unhashPassword(user.hesh_pass)) 
+      {
+        setLogin('');
+        setPassword('');
+        setLoginError("");
+        setPasswordError("");
+      }
+      else 
+        setPasswordError("*Incorrect password");
+    } 
+    else 
+      setLoginError("*This user was not found");
+  }
+  //================================================================================================
+
+  // Verification of fields during registration.
   //================================================================================================
   const IsValidRegistrationPanel = () =>
   {
@@ -199,6 +233,11 @@ function Auth()
       });
     });
   };
+
+  const unhashPassword = (user_pass: string) =>
+  {
+    return bcrypt.compareSync(password, user_pass);
+  }
   //================================================================================================  
   //================================================================================================
 
@@ -240,9 +279,11 @@ function Auth()
             <h3>Auth</h3>
             <label htmlFor="username">Username</label>
             <input type="text" placeholder="Login" id="username" value={login} onChange={(e) => setLogin(e.target.value)} />
+            {loginError && <span className="error">{loginError}</span>}
             <label htmlFor="password">Password</label>
             <input type="password" placeholder="Password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button>Log In</button>
+            {passwordError && <span className="error">{passwordError}</span>}
+            <button onClick={handleLoginClick}>Log In</button>
             <button onClick={ShowRegistrationPlateClick}>Registration</button>
           </form>
         </div>
