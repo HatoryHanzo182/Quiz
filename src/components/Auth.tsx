@@ -41,7 +41,7 @@ function Auth()
 
     if(IsValidRegistrationPanel())
     {
-      const hesh_pass = hashPassword(password);
+      const hesh_pass = await hashPassword(password);
       const new_user = { name, surname, email, login, hesh_pass};
 
       try
@@ -185,27 +185,17 @@ function Auth()
   //================================================================================================
 
   // Password hashing.
-  const hashPassword = (user_pass: string): Promise<string> => {
-    const bcrypt = require('bcryptjs');
-  
-    return new Promise((resolve, reject) => 
-    {
-      bcrypt.genSalt(10, function(err: any, salt: any) 
-      {
-        if (err)
-          reject(err);
-        else 
-        {
-          bcrypt.hash(user_pass, salt, function(err: any, hash: any)
-           {
-            if (err) 
-              reject(err);
-            else 
-            {
-              return resolve(hash);
-            }
-          });
-        }
+  const hashPassword = (user_pass: string) => {
+    return new Promise<string>((resolve, reject) => {
+      bcrypt.genSalt(10, function(err: any, salt: any) {
+        bcrypt.hash(user_pass, salt, function(err: any, hash: any) {
+          if (err) {
+            console.error(err);
+            reject(err);
+          } else {
+            resolve(hash);
+          }
+        });
       });
     });
   };
