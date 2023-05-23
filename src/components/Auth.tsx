@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import '../styles/Auth.css';
-import Quiz from './Quiz';
 
 declare module 'bcryptjs';
 
@@ -74,6 +73,11 @@ function Auth()
   //================================================================================================
   function checkLoginAndPassword(data: any[]) 
   {
+    if(login.trim() === "" || login.charAt(0) == " ")
+      setLoginError("*This field cannot be empty");
+    else if(login.trim() === "" || login.charAt(0) == " ")
+      setPasswordError("*This field cannot be empty");
+
     const user = data.find(item => item.login === login);
   
     if (user) 
