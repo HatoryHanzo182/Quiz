@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import '../styles/Auth.css';
@@ -25,6 +26,8 @@ function Auth()
   
         // Button event handler opens registration window.
   const [showRegistration, setShowRegistration] = useState(false);
+  
+  const navigate = useNavigate();
   //================================================================================================
 
   // Functions.
@@ -41,7 +44,8 @@ function Auth()
 
     fetch('http://localhost:3000/users').then(response => response.json()).then(data => 
     { 
-      checkLoginAndPassword(data); 
+      if(checkLoginAndPassword(data))
+        navigate('/Menu');
     }).catch(error => console.error('Error while getting data:', error));
   }
 
@@ -64,7 +68,7 @@ function Auth()
         setLogin('');
         setPassword('');
         setShowRegistration(false);
-        alert("Welcome")
+        alert("Welcome");
       } catch (error) { console.error('Registration failed:', error); }
     }
   };
@@ -88,12 +92,16 @@ function Auth()
         setPassword('');
         setLoginError("");
         setPasswordError("");
+        
+        return true; 
       }
       else 
         setPasswordError("*Incorrect password");
     } 
     else 
       setLoginError("*This user was not found");
+    
+    return false;
   }
   //================================================================================================
 
