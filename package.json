@@ -10,13 +10,14 @@
     "@types/node": "^16.18.32",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "mongodb": "^5.5.0",
     "mongoose": "^7.2.0",
     "nodemon": "^2.0.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -26,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "nodestart":"nodemon index.js"
+    "nodestart": "nodemon index.js"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.2"
+    "@types/bcryptjs": "^2.4.2",
+    "react-router-dom": "^6.11.2"
   }
 }
