@@ -64,7 +64,7 @@ function Auth()
         setLogin('');
         setPassword('');
         setShowRegistration(false);
-        alert("Welcome")
+        alert("Welcome");
       } catch (error) { console.error('Registration failed:', error); }
     }
   };
