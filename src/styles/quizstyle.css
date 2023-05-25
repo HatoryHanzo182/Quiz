@@ -20,20 +20,25 @@ body {
   }
   
   .app {
-
     background-color: rgba(255, 255, 255, 0.13);
-    
     backdrop-filter: blur(10px);
-    width: auto;
-    max-width: 750px;
-    min-height: 300px;
-    height: min-content;
+    padding: 3.1em 1.8em;
+    width: 80%;
+    max-width: 37.5em;
+    margin: 0 auto;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 0.6em;
     border-radius: 15px;
-    padding: 20px;
     box-shadow: 10px 10px 42px 0px rgba(63, 59, 59, 0.75);
+   
 
-    display: flex;
-    justify-content: space-evenly;
+     
+    
+   
+   
   }
 
   .score-section {
@@ -60,7 +65,7 @@ body {
     margin-bottom: 12px;
   }
   
-  .timer-text {
+  /* .timer-text {
     background: rgb(230, 153, 12);
     padding: 15px;
     margin-top: 20px;
@@ -68,21 +73,21 @@ body {
     border: 5px solid rgb(255, 189, 67);
     border-radius: 15px;
     text-align: center;
-  }
+  } */
   
   /* ANSWERS/RIGHT SECTION */
   .answer-section {
     
     width: 100%;
-    display: flex;
+    display:flex;
     flex-direction:column ;
     justify-content: space-between;
   }
   
-  button {
+button {
     width: 100%;
-    width: auto;
-    max-width: 550px;
+
+    max-width: auto;
     font-size: 16px;
     color: black;
     background-color: white;
@@ -104,16 +109,16 @@ body {
   .incorrect {
     background-color: #ff3333;
   }
-  
-  button:hover {
+
+button:hover {
     background-color: #1b1d256f;
   }
   
-  button:focus {
+button:focus {
     outline: none;
   }
   
-  button svg {
+button svg {
     margin-right: 5px;
   }
 
