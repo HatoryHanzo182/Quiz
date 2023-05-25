@@ -23,6 +23,14 @@
       "login": "BBsinator",
       "hesh_pass": "$2a$10$28JMHOnfVWlmMsMX9oafU.YbjOEBajeXUumnzizc/lfRESbbAhzA2",
       "id": "6Is3iai"
+    },
+    {
+      "name": "NewUser",
+      "surname": "NewSurname",
+      "email": "NewUser332@gmail.com",
+      "login": "NewUser",
+      "hesh_pass": "$2a$10$zPJPu25W4h679Gor6q1UbeeqUjJvlZ72X1fKyYp4iEafXkBl2zhVe",
+      "id": "pP39W4m"
     }
   ]
 }
