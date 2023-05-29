@@ -92,7 +92,7 @@ const resetQuiz=()=>
                 <div className='score-section'>
                     You have scored {score} out of {Questionbank.length}
                     <>
-                       <button type="submit" onClick={resetQuiz}>Play Again!!</button>
+                       <button className="score-button" type="submit" onClick={resetQuiz}>Restart</button>
                     </>
                 </div>
             )
