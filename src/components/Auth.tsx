@@ -61,15 +61,17 @@ function Auth()
       try
       {
         await axios.post('http://localhost:3000/users', new_user);
-  
+
         setName('');
         setSurname('');
         setEmail('');
         setLogin('');
         setPassword('');
         setShowRegistration(false);
+        
         alert("Welcome");
-      } catch (error) { console.error('Registration failed:', error); }
+      } 
+      catch (error) { console.error('Registration failed:', error); }
     }
   };
 
