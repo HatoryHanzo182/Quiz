@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useContext,useEffect } from 'react';
 import Auth from './components/Auth';
-import Menu from './components/Menu';
 import TeacherMenu from './components/TeacherMenu';
+import Menu from './components/Menu';
+import Quiz from './components/Quiz';
 import './App.css';
 
 function App() 
