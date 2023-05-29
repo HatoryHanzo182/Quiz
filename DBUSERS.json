@@ -5,7 +5,8 @@
       "surname": "",
       "email": "",
       "login": "",
-      "password": "",
+      "hesh_pass": "",
+      "teacher_code": "",
       "id": "1"
     },
     {
@@ -13,24 +14,27 @@
       "surname": "Belford",
       "email": "JB69@gmail.com",
       "login": "JB",
-      "hesh_pass": "$2a$10$zRI4IKcWxsihXsIyD62CeuxHlE0OBuSCfygEQigNClWX6m67C3OaK",
-      "id": "5Qkpzd2"
+      "hesh_pass": "$2a$10$yIqX0600h3nTGjbcNonBs..me1R5FEcRNY3ZUAxfF51GY7FsyO5ru",
+      "teacher_code": "jc9ZR8uaQZAD",
+      "id": "lultMyP"
     },
     {
-      "name": "Sinator",
-      "surname": "BIBIK",
-      "email": "BBSinator@gmail.com",
-      "login": "BBsinator",
-      "hesh_pass": "$2a$10$28JMHOnfVWlmMsMX9oafU.YbjOEBajeXUumnzizc/lfRESbbAhzA2",
-      "id": "6Is3iai"
+      "name": "Miki",
+      "surname": "Janovcky",
+      "email": "MikiJ@gmail.com",
+      "login": "MJ223",
+      "hesh_pass": "$2a$10$11bQ29jmpqpLys0rKTAb8uSQYy1ukf7Vygbz.Q2rqFZIUPFCfcX2C",
+      "teacher_code": "null",
+      "id": "frjuWvi"
     },
     {
-      "name": "NewUser",
+      "name": "NewName",
       "surname": "NewSurname",
-      "email": "NewUser332@gmail.com",
-      "login": "NewUser",
-      "hesh_pass": "$2a$10$zPJPu25W4h679Gor6q1UbeeqUjJvlZ72X1fKyYp4iEafXkBl2zhVe",
-      "id": "pP39W4m"
+      "email": "NewGmail@gmail.com",
+      "login": "NewLogin",
+      "hesh_pass": "$2a$10$6JGuX2jgZIK2gcI0Nto.X./W2xy5kaIkcFixzBZCTRuydFdZVvJe6",
+      "teacher_code": "KQPIhuAAW0yK",
+      "id": "s_N0nc-"
     }
   ]
 }
