@@ -144,7 +144,7 @@ input {
   opacity: 1;
 }
 
-button {
+.authbtn {
   width: 100%;
   background-color: #ffffff;
   color: #080710;
@@ -157,7 +157,7 @@ button {
   margin-top: 30px;
 }
 
-button:hover {
+.authbtn:hover {
   color: #ffffff;
   background-color: #080710;
 }

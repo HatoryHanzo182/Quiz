@@ -345,8 +345,8 @@ function Auth({ updateUserData }: AuthProps)
             <label htmlFor="password">Password</label>
             <input type="password" placeholder="Password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             {passwordError && <span className="error">{passwordError}</span>}
-            <button onClick={handleLoginClick}>Log In</button>
-            <button onClick={ShowRegistrationPlateClick}>Registration</button>
+            <button className="authbtn" onClick={handleLoginClick}>Log In</button>
+            <button className="authbtn" onClick={ShowRegistrationPlateClick}>Registration</button>
           </form>
         </div>
       )}
