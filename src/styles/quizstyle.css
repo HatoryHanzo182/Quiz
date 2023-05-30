@@ -103,7 +103,7 @@ body {
     justify-content: space-between;
   }
   
-button {
+.btnquiz {
     width: 100%;
     overflow: hidden;
     font-size: 16px;
@@ -128,15 +128,15 @@ button {
     background-color: #ff3333;
   }
 
-button:hover {
+  .btnquiz:hover {
     background-color: #1b1d256f;
   }
   
-button:focus {
+  .btnquiz:focus {
     outline: none;
   }
   
-button svg {
+  .btnquiz:svg {
     margin-right: 5px;
   }
 

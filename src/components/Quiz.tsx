@@ -92,7 +92,7 @@ const Quiz = () => {
 
             <div className="answer-section">
               {questionBank[currentQuestion].answers.map((answer, index) => (
-                <button key={index} onClick={() => handleAnswerResponse(answer.isCorrect)}>
+                <button className="btnquiz"key={index} onClick={() => handleAnswerResponse(answer.isCorrect)}>
                   {answer.answer}
                 </button>
               ))}

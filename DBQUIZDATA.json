@@ -5,50 +5,229 @@
         "title": "Software Developer C++",
         "questions": [
           {
-            "question": "What is AAA abrjs jkljdf jlf jfl kwf lkf kofo kwofj jwehsi nvn fjkvnfjnsbv jdbfjsb jdbj bdj wsn wk mm m kdk k ?",
+            "question": "What is a correct syntax to output 'Hello World' in C++?",
             "answers": [
-              { "answer": "AAA", "isCorrect": true },
-              { "answer": "BBB", "isCorrect": false },
-              { "answer": "CCC", "isCorrect": false },
-              { "answer": "DDD", "isCorrect": false }
+              { "answer": "System.out.println('Hello World');", "isCorrect": false },
+              { "answer": "print ('Hello World');", "isCorrect": false },
+              { "answer": "Console.WriteLine('Hello World');", "isCorrect": false },
+              { "answer": "cout << 'Hello World';", "isCorrect": true }
             ]
           },
           {
-            "question": "What is BBB?",
+            "question": "C++ is an alias of C#",
             "answers": [
-              { "answer": "AAA", "isCorrect": false },
-              { "answer": "BBB", "isCorrect": true },
-              { "answer": "CCC", "isCorrect": false },
-              { "answer": "DDD", "isCorrect": false }
+              { "answer": "true", "isCorrect": false },
+              { "answer": "false", "isCorrect": true }
+             
             ]
           },
           {
-            "question": "What is GGG?",
+            "question": "How do you insert COMMENTS in C++ code?",
             "answers": [
-              { "answer": "GGG", "isCorrect": true },
-              { "answer": "BBB", "isCorrect": false },
-              { "answer": "CCC", "isCorrect": false },
-              { "answer": "DDD", "isCorrect": false }
+              { "answer": "# This is a comment", "isCorrect": false },
+              { "answer": "/* This is a comment", "isCorrect": false },
+              { "answer": "// This is a comment", "isCorrect": true }
+
             ]
           },
           {
-            "question": "What is DDD?",
+            "question": "Which data type is used to create a variable that should store text?",
             "answers": [
-                { "answer": "AAA", "isCorrect": false },
-                { "answer": "BBB", "isCorrect": false },
-                { "answer": "CCC", "isCorrect": false },
-                { "answer": "DDD", "isCorrect": true }
+                { "answer": "string", "isCorrect": true },
+                { "answer": "String", "isCorrect": false },
+                { "answer": "Txt", "isCorrect": false },
+                { "answer": "myString", "isCorrect": false }
             ]
           },
           {
-            "question": "What is CCC?",
+            "question": "How do you create a variable with the numeric value 5?",
             "answers": [
-                { "answer": "AAA", "isCorrect": false },
-                { "answer": "BBB", "isCorrect": false },
-                { "answer": "CCC", "isCorrect": true},
-                { "answer": "DDD", "isCorrect": false }
+                { "answer": "x = 5", "isCorrect": false },
+                { "answer": "double x = 5 ", "isCorrect": false },
+                { "answer": "num x = 5", "isCorrect": false},
+                { "answer": "int x = 5", "isCorrect": true }
+            ]
+          },
+          {
+            "question":"How do you create a variable with the floating number 2.8?",
+            "answers": [
+              {"answer":"x = 2.8", "isCorrect":false},
+              {"answer":"int x = 2.8", "isCorrect":false},
+              {"answer":"double x = 2.8", "isCorrect":true},
+              {"answer":"byte x = 2.8", "isCorrect":false}
+            ]
+          },
+          {
+            "question": "Which method can be used to find the length of a string?",
+            "answers": [
+                { "answer": "getSize()", "isCorrect": false },
+                { "answer": "length()", "isCorrect": true },
+                { "answer": "len()", "isCorrect": false},
+                { "answer": "getLength()", "isCorrect": false }
+            ]
+          },
+          
+         
+          {
+            "question":"Which operator is used to add together two values?",
+            "answers": [
+              {"answer":"The & sign", "isCorrect":false},
+              {"answer":"The * sign", "isCorrect":false},
+              {"answer":"The + sign", "isCorrect":true}
+
+            ]
+          },
+          {
+            "question":"The value of a string variable can be surrounded by single quotes.",
+            "answers": [
+              {"answer":"False", "isCorrect":true},
+              {"answer":"True", "isCorrect":false}
+
+            ]
+          },
+          {
+            "question":"Which header file lets us work with input and output objects?",
+            "answers": [
+              {"answer":"#include <iostream>", "isCorrect":true},
+              {"answer":"#include <inputstr>", "isCorrect":false},
+              {"answer":"#include <stream>", "isCorrect":false},
+              {"answer":"#include <iosstring>", "isCorrect":false}
+            ]
+          },
+          {
+            "question":"Which operator can be used to compare two values?",
+            "answers": [
+              {"answer":"<>", "isCorrect":false},
+              {"answer":"=", "isCorrect":false},
+              {"answer":"><", "isCorrect":false},
+              {"answer":"==", "isCorrect":true}
+            ]
+          },
+          {
+            "question":"To declare an array in C++, define the variable type with:",
+            "answers": [
+              {"answer":"()", "isCorrect":false},
+              {"answer":"{}", "isCorrect":false},
+              {"answer":"[]", "isCorrect":true}
+
+            ]
+          },
+          {
+            "question":"Array indexes start with:",
+            "answers": [
+              {"answer":"0", "isCorrect":true},
+              {"answer":"1", "isCorrect":false}
+            ]
+          },
+          {
+            "question":"How do you create a function in C++?",
+            "answers": [
+              {"answer":"(functionName)", "isCorrect":false},
+              {"answer":"functionName.", "isCorrect":false},
+              {"answer":"functionName[]", "isCorrect":false},
+              {"answer":"functionName()", "isCorrect":true}
+            ]
+          },
+          {
+            "question":"How do you call a function in C++?",
+            "answers": [
+              {"answer":"(functionName);", "isCorrect":false},
+              {"answer":"functionName[];", "isCorrect":false},
+              {"answer":"functionName();", "isCorrect":true},
+              {"answer":"functionName;", "isCorrect":false}
+            ]
+          },
+          {
+            "question":"Which keyword is used to create a class in C++?",
+            "answers": [
+              {"answer":"className", "isCorrect":false},
+              {"answer":"class()", "isCorrect":false},
+              {"answer":"class", "isCorrect":true},
+              {"answer":"MyClass", "isCorrect":false}
+            ]
+          },
+          {
+            "question":"What is the correct way to create an object called myObj of MyClass?",
+            "answers": [
+              {"answer":"class myObj = new MyClass();", "isCorrect":false},
+              {"answer":"MyClass myObj;", "isCorrect":true},
+              {"answer":"class MyClass = new myObj();", "isCorrect":false},
+              {"answer":"new myObj = MyClass();", "isCorrect":false}
+            ]
+          },
+          {
+            "question":"In C++, it is possible to inherit attributes and methods from one class to another.",
+            "answers": [
+              {"answer":"False", "isCorrect":false},
+              {"answer":"True", "isCorrect":true}
+
+
+            ]
+          },
+          {
+            "question":"Which method can be used to find the highest value of x and y?",
+            "answers": [
+              {"answer":"maxNum(x,y)", "isCorrect":false},
+              {"answer":"largest(x,y)", "isCorrect":false},
+              {"answer":"maximum(x,y)", "isCorrect":false},
+              {"answer":"max(x,y)", "isCorrect":true}
+            ]
+          },
+          {
+            "question":"Which operator is used to multiply numbers?",
+            "answers": [
+              {"answer":"*", "isCorrect":true},
+              {"answer":"%", "isCorrect":false},
+              {"answer":"x", "isCorrect":false},
+              {"answer":"#", "isCorrect":false}
+            ]
+          },
+          {
+            "question":"How do you create a reference variable of an existing variable?",
+            "answers": [
+              {"answer":"With the ref word", "isCorrect":false},
+              {"answer":"With the REF word", "isCorrect":false},
+              {"answer":"With the & operator", "isCorrect":true},
+              {"answer":"With the * operator", "isCorrect":false}
+            ]
+          },
+          {
+            "question":"How do you start writing an if statement in C++?",
+            "answers": [
+              {"answer":"if x > y then:", "isCorrect":false},
+              {"answer":"if x > y:", "isCorrect":false},
+              {"answer":"if (x > y)  ", "isCorrect":true}
+            ]
+          },
+          {
+            "question":"How do you start writing a while loop in C++?",
+            "answers": [
+              {"answer":"x > y while {", "isCorrect":false},
+              {"answer":"while x > y:", "isCorrect":false},
+              {"answer":"while x > y {", "isCorrect":false},
+              {"answer":"while (x > y)", "isCorrect":true}
+            ]
+          },
+          {
+            "question":"Which keyword is used to return a value inside a method?",
+            "answers": [
+              {"answer":"get", "isCorrect":false},
+              {"answer":"break", "isCorrect":false},
+              {"answer":"return", "isCorrect":true},
+              {"answer":"void", "isCorrect":false}
+            ]
+          },
+          {
+            "question":"Which statement is used to stop a loop?",
+            "answers": [
+              {"answer":"break", "isCorrect":true},
+              {"answer":"exit", "isCorrect":false},
+              {"answer":"return", "isCorrect":false},
+              {"answer":"stop", "isCorrect":false}
             ]
           }
+          
+
         ]
       },
       {
