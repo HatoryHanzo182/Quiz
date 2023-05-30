@@ -11,13 +11,12 @@ import Quiz from './components/Quiz';
 function App() 
 {
   return(
-<Quiz />
-/* <BrowserRouter>
+ <BrowserRouter>
       <Routes>
       <Route path="/" element={<Auth />}/>
       <Route path="/Menu" element={<Menu />} />
       </Routes>
-    </BrowserRouter> */
+    </BrowserRouter> 
   );
 }
 

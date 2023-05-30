@@ -7,6 +7,12 @@ import '../styles/Menu.css';
 function Menu() {
   return (
 <>
+<div><datagrid>dl;sd
+  ksd
+  wdkldck
+  dkcdlvk
+  <b>
+    </b></datagrid></div>
 <div className="ag-format-container">
   <div className="ag-courses_box">
     <div className="ag-courses_item">
