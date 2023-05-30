@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
@@ -6,7 +6,12 @@ import '../styles/Auth.css';
 
 declare module 'bcryptjs';
 
-function Auth() 
+interface AuthProps 
+{
+  updateUserData: React.Dispatch<React.SetStateAction<null>>;
+}
+
+function Auth({ updateUserData }: AuthProps)
 {
   // Hooks.
   //================================================================================================
@@ -16,6 +21,7 @@ function Auth()
   const [email, setEmail] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [teacher_code, setCode] = useState('null');
 
         // Passing validity error messages.
   const [nameError, setNameError] = useState('');
@@ -24,39 +30,46 @@ function Auth()
   const [loginError, setLoginError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   
-        // Button event handler opens registration window.
-  const [showRegistration, setShowRegistration] = useState(false);
+  const [showRegistration, setShowRegistration] = useState(false);  // Button event handler opens registration window.
+  const [isTeacher, setIsChecked] = useState(false);  // Hook for defining teacher checkbox logic.
   
-  const navigate = useNavigate();
+  const navigate = useNavigate();  // Page navigation hook.
   //================================================================================================
 
   // Functions.
   //================================================================================================
-  const ShowRegistrationPlateClick = (event: any) => 
+  const ShowRegistrationPlateClick = (event: any) =>  // method shows registration layout.
   {
     event.preventDefault();
     setShowRegistration(true);
   };
 
-  const handleLoginClick = async (event: any) =>
+  const handleLoginClick = async (event: any) =>  // Login button event.
   {
     event.preventDefault();
 
     fetch('http://localhost:3000/users').then(response => response.json()).then(data => 
     { 
-      if(checkLoginAndPassword(data))
+      const { role, user } = checkLoginAndPassword(data);
+
+      if(role === "teacher")
+      {
+        updateUserData(user);
+        navigate('/TeacherMenu');
+      }
+      else if(role === "student")
         navigate('/Menu');
     }).catch(error => console.error('Error while getting data:', error));
   }
 
-  const handleRegistrationClick = async (event: any) => 
+  const handleRegistrationClick = async (event: any) => // Register button event.
   {
     event.preventDefault();
 
     if(IsValidRegistrationPanel())
     {
       const hesh_pass = await hashPassword(password);
-      const new_user = { name, surname, email, login, hesh_pass};
+      const new_user = { name, surname, email, login, hesh_pass, teacher_code};
 
       try
       {
@@ -68,12 +81,15 @@ function Auth()
         setLogin('');
         setPassword('');
         setShowRegistration(false);
+        setCode('null');
         
         alert("Welcome");
       } 
       catch (error) { console.error('Registration failed:', error); }
     }
   };
+
+  const handleCheckboxChange = () =>  { setIsChecked(!isTeacher); };
 
   // Login authentication.
   //================================================================================================
@@ -94,8 +110,11 @@ function Auth()
         setPassword('');
         setLoginError("");
         setPasswordError("");
+
+        if(user.teacher_code !== "null")
+          return { role: "teacher", user: user };
         
-        return true; 
+        return { role: "student", user: user }
       }
       else 
         setPasswordError("*Incorrect password");
@@ -103,7 +122,7 @@ function Auth()
     else 
       setLoginError("*This user was not found");
     
-    return false;
+      return { role: "null", user: null };
   }
   //================================================================================================
 
@@ -197,7 +216,7 @@ function Auth()
       setLoginError("*The allowed number of characters in this field is from 2 to 37");
       return false;
     }
-    else if(!/^[a-zA-Z]+$/.test(login))
+    else if(!/^[a-zA-Z0-9]+$/.test(login))
     {
       setLoginError("*Only characters are allowed in this field.");
       return false;
@@ -233,24 +252,49 @@ function Auth()
   //================================================================================================
 
   // Password hashing.
-  const hashPassword = (user_pass: string) => {
-    return new Promise<string>((resolve, reject) => {
-      bcrypt.genSalt(10, function(err: any, salt: any) {
-        bcrypt.hash(user_pass, salt, function(err: any, hash: any) {
-          if (err) {
+  //================================================================================================
+  const hashPassword = (user_pass: string) => 
+  {
+    return new Promise<string>((resolve, reject) => 
+    {
+      bcrypt.genSalt(10, function(err: any, salt: any)
+       {
+        bcrypt.hash(user_pass, salt, function(err: any, hash: any)
+         {
+          if (err) 
+          {
             console.error(err);
             reject(err);
-          } else {
+          } 
+          else
             resolve(hash);
-          }
         });
       });
     });
   };
 
-  const unhashPassword = (user_pass: string) =>
+  const unhashPassword = (user_pass: string) => { return bcrypt.compareSync(password, user_pass); }
+  //================================================================================================  
+
+  // Teacher code.
+  //================================================================================================  
+  useEffect(() =>  // Hook for asynchronous checkbox definition.
   {
-    return bcrypt.compareSync(password, user_pass);
+    if (isTeacher) 
+      setCode(generateCode());
+    else 
+      setCode("null");
+  }, [isTeacher, teacher_code]);
+
+  function generateCode() // Code generation function.
+  {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+  
+    for (let i = 0; i < 12; i++) 
+      code += characters.charAt(Math.floor(Math.random() * characters.length));
+  
+    return code;
   }
   //================================================================================================  
   //================================================================================================
@@ -280,6 +324,10 @@ function Auth()
             <label htmlFor="password">Password</label>
             <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             {passwordError && <span className="error">{passwordError}</span>}
+            <div className="checkbox">
+              <input type="checkbox" id="teacher-checkbox" checked={isTeacher} onChange={handleCheckboxChange}/>
+              <label htmlFor="teacher-checkbox">Are you a teacher?</label>
+            </div>
             <button onClick={handleRegistrationClick}>Register</button>
           </form>
         </div>
