@@ -303,10 +303,10 @@ function Auth({ updateUserData }: AuthProps)
     <>
       {showRegistration ? (
         <div>
-          <div className="background">
+          {/* <div className="background">
             <div className="shape"></div>
-            <div className="shape"></div>
-          </div>
+            <div className="shape"></div> 
+          </div> */}
           <form>
             <h3>Registration</h3>
             <label htmlFor="name">Name</label>
@@ -334,8 +334,8 @@ function Auth({ updateUserData }: AuthProps)
       ) : (
         <div>
           <div className="background">
-            <div className="shape"></div>
-            <div className="shape"></div>
+            {/* <div className="shape"></div>
+            <div className="shape"></div> */}
           </div>
           <form>
             <h3>Auth</h3>
