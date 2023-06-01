@@ -16,27 +16,21 @@ const Quiz = () => {
     {
         try 
         {
-          const response = await axios.get('http://localhost:3001/quizzes');
-          const quiz = response.data.find((quiz: { id: string }) => quiz.id === '7A16E2CB489F4C41853CFE40B13623D2');  // Looking for quiz data by our id.
-      
-          if (quiz)  // If the data is found, we loop through it to our questionBank hook.
+          const response = await axios.get('http://localhost:3000/quizzes/64775e1f880214b8b0d297ce');
+          const quizData = response.data;
+          
+          const updatedQuestionBank = quizData.questions.map((questionData: Question) => 
           {
-            const updatedQuestionBank = quiz.questions.map((question: Question) => 
-            {
-              return {
-                question: question.question,
-                answers: question.answers.map((answer) => (
-                {
-                    answer: answer.answer,
-                    isCorrect: answer.isCorrect
-                }))
-              };
-            });
-
-            setQuestionBank(updatedQuestionBank);  // 
-          }
-        } catch (error) { console.error('Error while fetching quiz data:', error); }
-      };
+            const { question, answers } = questionData;
+            const transformedAnswers = answers.map((answer) => ({ answer: answer.answer, isCorrect: answer.isCorrect }));
+      
+            return { question, answers: transformedAnswers };
+          });
+      
+          setQuestionBank(updatedQuestionBank);
+      } 
+      catch (error) { console.error('Error while fetching quiz data:', error); }
+    };
     
       fetchQuizData();
   }, []);

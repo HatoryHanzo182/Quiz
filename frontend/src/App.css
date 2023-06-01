@@ -63,7 +63,6 @@ button:hover {
   align-items: center;
 }
 
-<<<<<<< HEAD:frontend/src/App.css
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -71,13 +70,12 @@ button:hover {
   to {
     transform: rotate(360deg);
   }
-=======
+}
+
 #nextQuestion {
   width: 200px;
 }
 
 h3 {
   color: #ffffff;
-
->>>>>>> secondary:src/App.css
 }

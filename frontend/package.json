@@ -10,10 +10,6 @@
     "@types/node": "^16.18.34",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
-<<<<<<< HEAD:frontend/package.json
-    "bcrypt": "^5.1.0",
-    "bcryptjs": "^2.4.3",
-=======
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
@@ -23,7 +19,6 @@
     "mongodb": "^5.5.0",
     "mongoose": "^7.2.0",
     "nodemon": "^2.0.22",
->>>>>>> secondary:package.json
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",

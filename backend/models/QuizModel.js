@@ -1,7 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-
-
 const quizSchema = new Schema(  // Quiz model.
 {
   id: String,
@@ -13,7 +11,6 @@ const quizSchema = new Schema(  // Quiz model.
     },
   ],
 });
-
 
 const Quiz = mongoose.model('quizes', quizSchema);  // Create a Quiz Model.
 

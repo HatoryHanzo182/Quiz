@@ -5,6 +5,15 @@ import QuizModel from './models/QuizModel.js';
 const app = express()
 
 app.use(express.json())
+app.use((req, res, next) =>  // Middleware for handling CORS. 
+{
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 
 const DB_URL = "mongodb+srv://admin:5PPrcFfQcS3sHIBo@db.xl5bjqi.mongodb.net/QuizData?retryWrites=true&w=majority";
 const PORT =  3000 // process.env.PORT 
