@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+//import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import '../styles/Auth.css';
 
@@ -73,7 +73,7 @@ function Auth({ updateUserData }: AuthProps)
 
       try
       {
-        await axios.post('http://localhost:3000/users', new_user);
+        //await axios.post('http://localhost:3000/users', new_user);
 
         setName('');
         setSurname('');
