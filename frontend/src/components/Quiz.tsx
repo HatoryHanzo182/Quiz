@@ -61,8 +61,8 @@ const Quiz = () => {
   return (
     <>
       <div className="background">
-        <div className="shape"></div>
-        <div className="shape"></div>
+        {/* <div className="shape"></div>
+        <div className="shape"></div> */}
       </div>
       <div className="app">
         {showScore ? (
