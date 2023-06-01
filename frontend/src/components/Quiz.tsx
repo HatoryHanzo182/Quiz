@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Question from '../modules/Question'; 
-import '../styles/quizstyle.css';
+import '../styles/Quiz.css';
 
 const Quiz = () => {
   //useState Hook

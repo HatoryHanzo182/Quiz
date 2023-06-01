@@ -12,7 +12,7 @@ function App()
   const [userData, setUserData] = useState(null);  // This hook receives user data and passes it to other components.
 
   return (
-    <Menu/>
+<Menu/>
     // <BrowserRouter>
     //   <Routes>
     //   <Route path="/" element={<Auth updateUserData={setUserData} />}/>
