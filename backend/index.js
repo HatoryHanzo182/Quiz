@@ -1,12 +1,12 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import QuizModel from '../src/modules/QuizModel';
+import QuizModel from './models/QuizModel.js';
 
 const app = express()
 
 app.use(express.json())
 
-const DB_URL = "mongodb+srv://admin:5PPrcFfQcS3sHIBo@db.xl5bjqi.mongodb.net/?retryWrites=true&w=majority";
+const DB_URL = "mongodb+srv://admin:5PPrcFfQcS3sHIBo@db.xl5bjqi.mongodb.net/QuizData?retryWrites=true&w=majority";
 const PORT =  3000 // process.env.PORT 
 
 app.get('/quizzes/:id', async (req, res) => 
@@ -14,7 +14,7 @@ app.get('/quizzes/:id', async (req, res) =>
   try 
   {
     const { id } = req.params;
-    const quiz = await QuizModel.findOneById(id);
+    const quiz = await QuizModel.findById(id);
     
     res.json(quiz);
   } 
