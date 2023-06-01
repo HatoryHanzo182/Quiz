@@ -48,9 +48,10 @@ function Auth({ updateUserData }: AuthProps)
   {
     event.preventDefault();
 
-    fetch('http://localhost:3000/users').then(response => response.json()).then(data => 
+    try
     { 
-      const { role, user } = checkLoginAndPassword(data);
+      const response = await axios.get('http://localhost:3000/users');
+      const { role, user } = checkLoginAndPassword(response.data);
 
       if(role === "teacher")
       {
@@ -59,7 +60,8 @@ function Auth({ updateUserData }: AuthProps)
       }
       else if(role === "student")
         navigate('/Menu');
-    }).catch(error => console.error('Error while getting data:', error));
+    }
+    catch(error) {  console.error('Error while getting data:', error); };
   }
 
   const handleRegistrationClick = async (event: any) => // Register button event.
