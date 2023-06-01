@@ -1,29 +1,20 @@
 import express from 'express'
 import mongoose from 'mongoose'
-<<<<<<< HEAD
-
-=======
 import QuizModel from '../src/modules/QuizModel';
->>>>>>> secondary
 
 const app = express()
 
 app.use(express.json())
 
 const DB_URL = "mongodb+srv://admin:5PPrcFfQcS3sHIBo@db.xl5bjqi.mongodb.net/?retryWrites=true&w=majority";
-<<<<<<< HEAD
 const PORT =  3000 // process.env.PORT 
-
-const start = async () => {
-=======
-const PORT =  3000  // process.env.PORT 
 
 app.get('/quizzes/:id', async (req, res) => 
 {
   try 
   {
     const { id } = req.params;
-    const quiz = await QuizModel.findOne({ id });
+    const quiz = await QuizModel.findOneById(id);
     
     res.json(quiz);
   } 
@@ -36,7 +27,6 @@ app.get('/quizzes/:id', async (req, res) =>
 
 const start = async () => 
 {
->>>>>>> secondary
   try {
     await mongoose.connect(DB_URL)
     console.log(mongoose.connection.readyState)
