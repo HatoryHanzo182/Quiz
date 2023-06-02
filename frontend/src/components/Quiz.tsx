@@ -89,7 +89,7 @@ const Quiz = () => {
 <div className="navbar"> 
   <a className='profile' href='.'><VscAccount size={25}></VscAccount></a>
    </div>
-      <div className="timer-section">Time: {formatTime(time)}</div>
+      <div className="timer-section">{formatTime(time)}</div>
       <div className="app">
         {showScore ? (
           <div className="score-section">
