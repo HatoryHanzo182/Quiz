@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Question from '../modules/Question'; 
 import '../styles/Quiz.css';
@@ -8,7 +9,8 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const [questionBank, setQuestionBank] = useState<Question[]>([]);   // Data about the quiz that we received by ID are stored here
+  const [questionBank, setQuestionBank] = useState<Question[]>([]);   // Data about the quiz that we received by ID are stored here.
+  const { quiz_id } = useParams();
 
   useEffect(() =>  // The hook runs after the page is loaded.
   {
@@ -16,7 +18,8 @@ const Quiz = () => {
     {
         try 
         {
-          const response = await axios.get('http://localhost:3000/quizzes/64775e1f880214b8b0d297ce');
+          console.log(quiz_id);
+          const response = await axios.get(`http://localhost:3000/quizzes/${quiz_id}`);
           const quizData = response.data;
           
           const updatedQuestionBank = quizData.questions.map((questionData: Question) => 
@@ -33,7 +36,7 @@ const Quiz = () => {
     };
     
       fetchQuizData();
-  }, []);
+  }, [quiz_id]);
 
   const handleAnswerResponse = (isCorrect: any) => {
     if (isCorrect) {
