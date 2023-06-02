@@ -82,15 +82,15 @@ const Quiz = () => {
     setShowScore(false);
   };
 
-  if (questionBank.length === 0) { return <div>Loading...</div>; }
+  if (questionBank.length === 0) { return <div>Loading...</div>;}
 
   return (
     <>
 <div className="navbar"> 
   <a className='profile' href='.'><VscAccount size={25}></VscAccount></a>
    </div>
-      <div className="app">
       <div className="timer-section">Time: {formatTime(time)}</div>
+      <div className="app">
         {showScore ? (
           <div className="score-section">
             You have scored {score} out of {questionBank.length}
