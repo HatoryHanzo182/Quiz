@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Question from '../modules/Question'; 
+import { VscAccount } from "react-icons/vsc";
 import '../styles/Quiz.css';
 
 const Quiz = () => {
@@ -63,11 +64,20 @@ const Quiz = () => {
 
   return (
     <>
-      <div className="background">
-        {/* <div className="shape"></div>
-        <div className="shape"></div> */}
-      </div>
+
+
+
+
+<div className="navbar">
+  
+  <a className='profile' href='.'><VscAccount size={25}></VscAccount></a>
+  
+
+   </div>
+   
+    
       <div className="app">
+        
         {showScore ? (
           <div className="score-section">
             You have scored {score} out of {questionBank.length}
@@ -89,7 +99,7 @@ const Quiz = () => {
 
             <div className="answer-section">
               {questionBank[currentQuestion].answers.map((answer, index) => (
-                <button className="btnquiz"key={index} onClick={() => handleAnswerResponse(answer.isCorrect)}>
+                <button className="btnquiz" key={index} onClick={() => handleAnswerResponse(answer.isCorrect)}>
                   {answer.answer}
                 </button>
               ))}

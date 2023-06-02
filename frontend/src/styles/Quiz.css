@@ -51,10 +51,19 @@ body {
   }
 
 .score-button {
-  margin: 15px;
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 120px;
+
+  width: 50%;
+  overflow: hidden;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 15px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid #234668;
+  cursor: pointer;
 
 
 
@@ -63,6 +72,10 @@ body {
    
 
 
+  }
+
+  .score-button:hover {
+  border-color: #1845ad;
   }
   
   /* QUESTION/TIMER/LEFT SECTION */
@@ -168,4 +181,12 @@ body {
     right: -50px;
     bottom: -20px;
   }
-  
+
+  .navbar {
+
+
+    display: inline-flex;
+    width: auto;
+    justify-content: space-between;
+    float:right;
+  }

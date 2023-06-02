@@ -14,14 +14,14 @@ function Menu()
   return (
   <>
 
-<nav>
+
   <div className="navbar">
-    <a className="logo" href=".">Лого</a>
+  
    <a className='profile' href='.'><VscAccount size={25}></VscAccount></a>
    
 
     </div>
-</nav>
+
     <div className="ag-format-container">
       <div className="ag-courses_box">
         <div className="ag-courses_item">
