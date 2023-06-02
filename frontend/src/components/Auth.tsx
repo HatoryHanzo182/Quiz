@@ -330,15 +330,15 @@ function Auth({ updateUserData }: AuthProps)
               <input type="checkbox" id="teacher-checkbox" checked={isTeacher} onChange={handleCheckboxChange}/>
               <label htmlFor="teacher-checkbox">Are you a teacher?</label>
             </div>
-            <button onClick={handleRegistrationClick}>Register</button>
+            <button className="authbtn" onClick={handleRegistrationClick}>Register</button>
           </form>
         </div>
       ) : (
         <div>
-          <div className="background">
-            {/* <div className="shape"></div>
-            <div className="shape"></div> */}
-          </div>
+          {/* <div className="background">
+             <div className="shape"></div>
+            <div className="shape"></div> 
+          </div> */}
           <form>
             <h3>Auth</h3>
             <label htmlFor="username">Username</label>
