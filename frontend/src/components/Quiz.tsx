@@ -82,9 +82,11 @@ const Quiz = () => {
           <div className="score-section">
             You have scored {score} out of {questionBank.length}
             <>
+          <input type='text' placeholder='Teachers code'></input>
               <button className="score-button" type="submit" onClick={resetQuiz}>
                 Restart
               </button>
+              
             </>
           </div>
         ) : (

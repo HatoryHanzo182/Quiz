@@ -11,8 +11,12 @@ function TeacherMenu({ userData }: TeacherMenuProps)
 
     return(
     <>
-        <h1 className={userData && userData.teacher_code}>{userData && userData.teacher_code}</h1>
-    </>)
+
+    <h1 className={userData && userData.teacher_code}>{userData && userData.teacher_code}</h1>
+
+ </>)
+
+    
 } 
 
 export default TeacherMenu;

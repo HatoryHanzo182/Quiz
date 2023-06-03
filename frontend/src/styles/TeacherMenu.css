@@ -1,3 +1,30 @@
-h1 {
-    color: aliceblue;
+body {
+    background-color: black
+}
+
+.containerT {
+display: flex;
+
+}
+
+.cont {
+background-color: white;
+border-radius: 20px;
+margin: 10px 20px;
+height: 400px;
+flex: 1;
+
+}
+
+.cont2 {
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 10px 20px;
+    height: 700px;
+    
+    flex: 1;
+}
+
+.profile {
+
 }
