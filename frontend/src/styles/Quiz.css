@@ -190,3 +190,17 @@ margin-top: 10px;
     justify-content: space-between;
     float:right;
   }
+
+  .timer-section {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  
+  .timer-section span {
+    font-weight: bold;
+  }

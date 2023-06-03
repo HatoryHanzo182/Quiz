@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Question from '../modules/Question'; 
 import { VscAccount } from "react-icons/vsc";
@@ -11,7 +11,9 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [questionBank, setQuestionBank] = useState<Question[]>([]);   // Data about the quiz that we received by ID are stored here.
-  const { quiz_id } = useParams();
+  const { quiz_id } = useParams();  // Getting id quiz from menu component.
+  const [time, setTime] = useState(900);  // Hook to get the actual time for the timer.
+  const navigate = useNavigate();  // Navigation to transfer to the menu after the end of the quiz.
 
   useEffect(() =>  // The hook runs after the page is loaded.
   {
@@ -39,6 +41,28 @@ const Quiz = () => {
       fetchQuizData();
   }, [quiz_id]);
 
+  useEffect(() =>  // Hook to get up-to-date time
+  {
+    const timer = setInterval(() => { setTime((prevTime) => prevTime - 1); }, 1000);
+
+    if (time === 0) 
+    {
+      clearInterval(timer);
+      navigate('/Menu');
+    }
+
+    return () => { clearInterval(timer); };
+  }, [time, navigate]);
+
+  const formatTime = (seconds: number) => 
+  {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+  };
+
+
   const handleAnswerResponse = (isCorrect: any) => {
     if (isCorrect) {
       setScore(score + 1);
@@ -58,26 +82,15 @@ const Quiz = () => {
     setShowScore(false);
   };
 
-  if (questionBank.length === 0) {
-    return <div>Loading...</div>;
-  }
+  if (questionBank.length === 0) { return <div>Loading...</div>;}
 
   return (
     <>
-
-
-
-
-<div className="navbar">
-  
+<div className="navbar"> 
   <a className='profile' href='.'><VscAccount size={25}></VscAccount></a>
-  
-
    </div>
-   
-    
+      <div className="timer-section">{formatTime(time)}</div>
       <div className="app">
-        
         {showScore ? (
           <div className="score-section">
             You have scored {score} out of {questionBank.length}
