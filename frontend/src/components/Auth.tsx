@@ -6,12 +6,7 @@ import '../styles/Auth.css';
 
 declare module 'bcryptjs';
 
-interface AuthProps 
-{
-  updateUserData: React.Dispatch<React.SetStateAction<null>>;
-}
-
-function Auth({ updateUserData }: AuthProps)
+function Auth()
 {
   // Hooks.
   //================================================================================================
@@ -36,14 +31,8 @@ function Auth({ updateUserData }: AuthProps)
   const navigate = useNavigate();  // Page navigation hook.
   //================================================================================================
 
-  // Functions.
+  // Login.
   //================================================================================================
-  const ShowRegistrationPlateClick = (event: any) =>  // method shows registration layout.
-  {
-    event.preventDefault();
-    setShowRegistration(true);
-  };
-
   const handleLoginClick = async (event: any) =>  // Login button event.
   {
     event.preventDefault();
@@ -54,44 +43,20 @@ function Auth({ updateUserData }: AuthProps)
       const { role, user } = checkLoginAndPassword(response.data);
 
       if(role === "teacher")
-      {
-        updateUserData(user);
+      { 
+        localStorage.setItem('userData', JSON.stringify(user));
+
         navigate('/TeacherMenu');
       }
       else if(role === "student")
+      {
+        localStorage.setItem('userData', JSON.stringify(user));
+
         navigate('/Menu');
+      }
     }
     catch(error) {  console.error('Error while getting data:', error); };
   }
-
-  const handleRegistrationClick = async (event: any) => // Register button event.
-  {
-    event.preventDefault();
-
-    if(IsValidRegistrationPanel())
-    {
-      const hesh_pass = await hashPassword(password);
-      const new_user = { name, surname, email, login, hesh_pass, teacher_code};
-
-      try
-      {
-        await axios.post('http://localhost:3000/users', new_user);
-
-        setName('');
-        setSurname('');
-        setEmail('');
-        setLogin('');
-        setPassword('');
-        setShowRegistration(false);
-        setCode('null');
-        
-        alert("Welcome");
-      } 
-      catch (error) { console.error('Registration failed:', error); }
-    }
-  };
-
-  const handleCheckboxChange = () =>  { setIsChecked(!isTeacher); };
 
   // Login authentication.
   //================================================================================================
@@ -127,6 +92,44 @@ function Auth({ updateUserData }: AuthProps)
       return { role: "null", user: null };
   }
   //================================================================================================
+  //================================================================================================
+
+  // Registration.
+  //================================================================================================
+  const ShowRegistrationPlateClick = (event: any) =>  // Method shows registration layout.
+  {
+    event.preventDefault();
+    setShowRegistration(true);
+  };
+
+  const handleRegistrationClick = async (event: any) => // Register button event.
+  {
+    event.preventDefault();
+
+    if(IsValidRegistrationPanel())
+    {
+      const hesh_pass = await hashPassword(password);
+      const new_user = { name, surname, email, login, hesh_pass, teacher_code};
+
+      try
+      {
+        await axios.post('http://localhost:3000/users', new_user);
+
+        setName('');
+        setSurname('');
+        setEmail('');
+        setLogin('');
+        setPassword('');
+        setShowRegistration(false);
+        setCode('null');
+        
+        alert("Welcome");
+      } 
+      catch (error) { console.error('Registration failed:', error); }
+    }
+  };
+
+  const handleCheckboxChange = () =>  { setIsChecked(!isTeacher); };
 
   // Verification of fields during registration.
   //================================================================================================
@@ -252,6 +255,7 @@ function Auth({ updateUserData }: AuthProps)
     return true;
   }
   //================================================================================================
+  //================================================================================================
 
   // Password hashing.
   //================================================================================================
@@ -299,7 +303,6 @@ function Auth({ updateUserData }: AuthProps)
     return code;
   }
   //================================================================================================  
-  //================================================================================================
 
   return (
     <>

@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import UserModel from './models/UserModel.js';
+import DataResultModel from './models/DataResultModel.js';
 import QuizModel from './models/QuizModel.js';
 
 const app = express()
@@ -18,6 +19,8 @@ app.use((req, res, next) =>  // Middleware for handling CORS.
 const DB_URL = "mongodb+srv://admin:5PPrcFfQcS3sHIBo@db.xl5bjqi.mongodb.net/QuizData?retryWrites=true&w=majority";
 const PORT =  3000 // process.env.PORT 
 
+// QUIZ REQUESTS.
+//=============================================================================================
         // To get a quiz under a specific id.
 app.get('/quizzes/:id', async (req, res) =>  
 {
@@ -34,7 +37,10 @@ app.get('/quizzes/:id', async (req, res) =>
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+//=============================================================================================
 
+// REQUESTS FOR USERS.
+//=============================================================================================
         // Getting user data when logging in.
 app.get('/users', async (req, res) => 
 {
@@ -68,18 +74,55 @@ app.post('/users', async (req, res) =>
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+//=============================================================================================
+
+// QUERY FOR RESULTS.
+//=============================================================================================
+        // Adding a quiz result to our result collection.
+app.post('/results', async (req, res) => 
+{
+  try 
+  {
+    const newResult = req.body;
+    const result = new DataResultModel(newResult);
+    
+    await result.save();
+    
+    res.status(201).json(result);
+  } 
+  catch (error) 
+  {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+        // Getting results data.
+app.get('/results', async (req, res) => 
+{
+  try 
+  {
+    const result = await DataResultModel.find();
+    
+    res.json(result);
+  } catch (error) 
+  {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+//=============================================================================================
 
 const start = async () => 
 {
-  try {
+  try 
+  {
     await mongoose.connect(DB_URL)
+
     console.log(mongoose.connection.readyState)
-    app.listen(PORT, () => {
-      console.log(`Server listening on port ${PORT}`)
-    })
-  } catch (error) {
-    console.log(error)
-  }
+    app.listen(PORT, () => { console.log(`Server listening on port ${PORT}`)})
+  } 
+  catch (error) { console.log(error)}
 }
 
 start()
