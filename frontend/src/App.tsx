@@ -7,6 +7,8 @@ import Menu from './components/Menu';
 import Quiz from './components/Quiz';
 import './App.css';
 import TMenu from './components/TMenu';
+import Profile from './components/Profile';
+
 
 function App() 
 {
@@ -14,15 +16,16 @@ function App()
 
   return (
 
-    <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<Auth updateUserData={setUserData} />}/>
-      <Route path="/TeacherMenu" element={userData && <TeacherMenu userData={userData} />} />
-      <Route path="/Menu" element={<Menu />} />
-      <Route path="/TMenu" element={<TMenu/>} />
-      <Route path="/Menu/Quiz/:quiz_id" element={ <Quiz />} />
-      </Routes>
-    </BrowserRouter>
+<Profile/>
+    // <BrowserRouter>
+    //   <Routes>
+    //   <Route path="/" element={<Auth updateUserData={setUserData} />}/>
+    //   <Route path="/TeacherMenu" element={userData && <TeacherMenu userData={userData} />} />
+    //   <Route path="/Menu" element={<Menu />} />
+    //   <Route path="/TMenu" element={<TMenu/>} />
+    //   <Route path="/Menu/Quiz/:quiz_id" element={ <Quiz />} />
+    //   </Routes>
+    // </BrowserRouter>
   );
 }
 
