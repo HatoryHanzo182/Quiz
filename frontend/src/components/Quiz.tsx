@@ -18,6 +18,7 @@ const Quiz = () =>
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(900);  // Hook to get the actual time for the timer.
   const [teachersCode, setTeachersCode] = useState('');
+  const [codeError, setCodeError] = useState('');
   
   const navigate = useNavigate();  // Navigation to transfer to the menu after the end of the quiz.
   
@@ -108,7 +109,9 @@ const Quiz = () =>
       const user_response = await axios.get('http://localhost:3000/users');
       const users = user_response.data;
 
-      if (users.find((user: User) => user.teacher_code === teachersCode)) 
+      if(teachersCode.trim() === "" || teachersCode.charAt(0) == " ")
+        setCodeError("*This field cannot be empty");
+      else if (users.find((user: User) => user.teacher_code === teachersCode)) 
       {        
         const currentDate = new Date();
         const new_result = 
@@ -127,9 +130,7 @@ const Quiz = () =>
         navigate('/Menu');
       } 
       else 
-      {
-        console.log('User not found');
-      }
+        setCodeError("*Teacher not found");
     }
     catch(error) {  console.error('Error while getting data:', error); };
   }
@@ -142,6 +143,7 @@ const Quiz = () =>
     <div className="app">{showScore ? (
       <div className="score-section">You have scored {score} out of {questionBank.length}<>
       <input type='text' placeholder='Teachers code' value={teachersCode} onChange={handleInputChange}></input>
+      {codeError && <span className="error">{codeError}</span>}
       <button className="score-button" type="submit" onClick={resetQuiz}>Restart</button>
       <button className="score-button" type="submit" onClick={sendResult}>Send code</button>
   </>

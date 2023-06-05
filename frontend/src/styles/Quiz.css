@@ -196,3 +196,8 @@ margin-top: 10px;
   .timer-section span {
     font-weight: bold;
   }
+
+  .error{
+    font-size: 13px;
+    color: #e90000;
+  }
