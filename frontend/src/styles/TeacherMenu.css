@@ -8,6 +8,7 @@ display: flex;
 }
 
 .cont {
+    
 background-color: white;
 border-radius: 20px;
 margin: 10px 20px;
@@ -23,8 +24,4 @@ flex: 1;
     height: 700px;
     
     flex: 1;
-}
-
-.profile {
-
 }
