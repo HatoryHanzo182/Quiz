@@ -23,12 +23,12 @@
 
   }
 
-  .text {
+  .ptext {
     font-size: 25px;
   }
   /* Float four columns side by side */
-  .column {
-
+  .pcolumn {
+ margin-left: 100px;
     display: flex;
 
     float: left;
@@ -37,19 +37,20 @@
 
   }
   
-  /* Remove extra left and right margins, due to padding
-  .cont {margin: 0 -5px;}
+  /* Remove extra left and right margins, due to padding */
+  .profcont {margin: 0 -5px;}
   
-  /* Clear floats after the columns 
-  .cont:after {
+  /* Clear floats after the columns */
+  .profcont:after {
     content: "";
     display: table;
     clear: both;
-  } */
+  }
   
   /* Responsive columns */
   @media screen and (max-width: 1200px) {
-    .column {
+    .pcolumn {
+      margin-left: 0;
       width: 100%;
       display: block;
       margin-bottom: 20px;
@@ -57,7 +58,7 @@
   }
   
   /* Style the counter cards */
-  .card {
+  .pcard {
     height: 550px;
     width: 550px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

@@ -8,13 +8,13 @@ function TMenu() {
 
 
 
-<div className="cont">
-  <div className="column">
-    <div className="card">
+<div className="profcont">
+  <div className="pcolumn">
+    <div className="pcard">
     <div className="pic">
         <img src={test}></img> 
       </div>
-      <div className="text">
+      <div className="ptext">
     <h3>name + surname</h3>
       <p>Login</p>
       <p>email</p>
@@ -22,12 +22,12 @@ function TMenu() {
     </div>
   </div>
 
-  <div className="column">
-    <div className="card">
+  <div className="pcolumn">
+    <div className="pcard">
     <div className="pic">
         <img src={test}></img> 
       </div>
-      <div className="text">
+      <div className="ptext">
     <h3>name + surname</h3>
       <p>Login</p>
       <p>email</p>
