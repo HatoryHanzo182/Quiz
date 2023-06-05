@@ -1,31 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import Question from '../modules/Question'; 
 import { VscAccount } from "react-icons/vsc";
+import axios from 'axios';
+import User from "../modules/UserDataModel";
+import Question from '../modules/QuestionModel'; 
 import '../styles/Quiz.css';
 import '../styles/bg.css'
 
-const Quiz = () => {
-  //useState Hook
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
-  const [showScore, setShowScore] = useState(false);
-  const [questionBank, setQuestionBank] = useState<Question[]>([]);   // Data about the quiz that we received by ID are stored here.
+const Quiz = () => 
+{
   const { quiz_id } = useParams();  // Getting id quiz from menu component.
+  const [questionBank, setQuestionBank] = useState<Question[]>([]);   // Data about the quiz that we received by ID are stored here.
+  const [quizTitle, setQuizTitle] = useState('');
+  const [userData, setUserData] = useState<User>();  // Hook to get user data. 
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const [score, setScore] = useState(0);
   const [time, setTime] = useState(900);  // Hook to get the actual time for the timer.
+  const [teachersCode, setTeachersCode] = useState('');
+  const [codeError, setCodeError] = useState('');
+  
   const navigate = useNavigate();  // Navigation to transfer to the menu after the end of the quiz.
-
+  
   useEffect(() =>  // The hook runs after the page is loaded.
   {
+    const ariownUserData = async () =>  // Get user data from browser local storage.
+    {
+      const storedUserData = localStorage.getItem('userData');
+    
+      if (storedUserData) 
+        setUserData(JSON.parse(storedUserData));
+    }
+
     const fetchQuizData = async () =>  // In the method we read data from the database.
     {
         try 
         {
-          console.log(quiz_id);
           const response = await axios.get(`http://localhost:3000/quizzes/${quiz_id}`);
           const quizData = response.data;
           
+          setQuizTitle(quizData.title);
+
           const updatedQuestionBank = quizData.questions.map((questionData: Question) => 
           {
             const { question, answers } = questionData;
@@ -38,7 +53,8 @@ const Quiz = () => {
       } 
       catch (error) { console.error('Error while fetching quiz data:', error); }
     };
-    
+
+      ariownUserData();
       fetchQuizData();
   }, [quiz_id]);
 
@@ -55,7 +71,7 @@ const Quiz = () => {
     return () => { clearInterval(timer); };
   }, [time, navigate]);
 
-  const formatTime = (seconds: number) => 
+  const formatTime = (seconds: number) =>
   {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -63,68 +79,88 @@ const Quiz = () => {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
-
-  const handleAnswerResponse = (isCorrect: any) => {
-    if (isCorrect) {
+  const handleAnswerResponse = (isCorrect: any) => 
+  {
+    if (isCorrect)
       setScore(score + 1);
-    }
 
     const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < questionBank.length) {
+    
+    if (nextQuestion < questionBank.length)
       setCurrentQuestion(nextQuestion);
-    } else {
+    else 
       setShowScore(true);
-    }
   };
 
-  const resetQuiz = () => {
+  const resetQuiz = () => 
+  {
     setCurrentQuestion(0);
     setScore(0);
     setShowScore(false);
+    setTime(900);
   };
 
+  const handleInputChange = (event: any) => { setTeachersCode(event.target.value); };
+
+  const sendResult = async () =>
+  {
+    try
+    {
+      const user_response = await axios.get('http://localhost:3000/users');
+      const users = user_response.data;
+
+      if(teachersCode.trim() === "" || teachersCode.charAt(0) == " ")
+        setCodeError("*This field cannot be empty");
+      else if (users.find((user: User) => user.teacher_code === teachersCode)) 
+      {        
+        const currentDate = new Date();
+        const new_result = 
+        {
+          teacher_code: teachersCode, 
+          quiz_title: quizTitle, 
+          grade: `${Math.round((((score / questionBank.length) * 100) / 100) * 12)}`, 
+          student: `${userData?.name} ${userData?.surname}`,
+          travel_time: formatTime(900 - time),
+          date: `${currentDate.toDateString()}`
+        }
+
+        await axios.post('http://localhost:3000/results', new_result);
+
+        alert("Code sent successfully");
+        navigate('/Menu');
+      } 
+      else 
+        setCodeError("*Teacher not found");
+    }
+    catch(error) {  console.error('Error while getting data:', error); };
+  }
+
   if (questionBank.length === 0) { return <div>Loading...</div>;}
-
   return (
-    <>
-<div className="navbar"> 
-  <a className='profile' href='.'><VscAccount size={25}></VscAccount></a>
-   </div>
-      <div className="timer-section">{formatTime(time)}</div>
-      <div className="app">
-        {showScore ? (
-          <div className="score-section">
-            You have scored {score} out of {questionBank.length}
-            <>
-          <input type='text' placeholder='Teachers code'></input>
-              <button className="score-button" type="submit" onClick={resetQuiz}>
-                Restart
-              </button>
-              
-            </>
-          </div>
-        ) : (
-          <div>
-            <div className="question-section">
-              <div className="question-count">
-                <span>{currentQuestion + 1}</span>/{questionBank.length}
-              </div>
-
-              <div className="question-text">{questionBank[currentQuestion].question}</div>
-            </div>
-
-            <div className="answer-section">
-              {questionBank[currentQuestion].answers.map((answer, index) => (
-                <button className="btnquiz" key={index} onClick={() => handleAnswerResponse(answer.isCorrect)}>
-                  {answer.answer}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+  <>
+    <div className="navbar"><a className='profile' href='.'><VscAccount size={25}></VscAccount></a></div>
+    <div className="timer-section">{formatTime(time)}</div>
+    <div className="app">{showScore ? (
+      <div className="score-section">You have scored {score} out of {questionBank.length}<>
+      <input type='text' placeholder='Teachers code' value={teachersCode} onChange={handleInputChange}></input>
+      {codeError && <span className="error">{codeError}</span>}
+      <button className="score-button" type="submit" onClick={resetQuiz}>Restart</button>
+      <button className="score-button" type="submit" onClick={sendResult}>Send code</button>
+  </>
+  </div>
+  ) : (
+    <div>
+      <div className="question-section">
+        <div className="question-count"><span>{currentQuestion + 1}</span>/{questionBank.length}</div>
+        <div className="question-text">{questionBank[currentQuestion].question}</div>
       </div>
-    </>
-  );
+      <div className="answer-section">
+        {questionBank[currentQuestion].answers.map((answer, index) => 
+        (<button className="btnquiz" key={index} onClick={() => handleAnswerResponse(answer.isCorrect)}>{answer.answer}</button>))}
+      </div>
+    </div>)}
+    </div>
+  </>);
 };
 
 export default Quiz;
