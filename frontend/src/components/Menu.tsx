@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { VscAccount } from "react-icons/vsc";
 import '../styles/Menu.css';
+import '../styles/bg.css'
 
 function Menu() 
 {

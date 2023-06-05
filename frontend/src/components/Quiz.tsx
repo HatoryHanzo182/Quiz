@@ -5,6 +5,7 @@ import axios from 'axios';
 import User from "../modules/UserDataModel";
 import Question from '../modules/QuestionModel'; 
 import '../styles/Quiz.css';
+import '../styles/bg.css'
 
 const Quiz = () => 
 {

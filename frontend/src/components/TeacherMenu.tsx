@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import User  from '../modules/UserDataModel';
 import axios from 'axios';
 import '../styles/TeacherMenu.css';
+import '../styles/bg.css'
 
 function TeacherMenu()
 {
