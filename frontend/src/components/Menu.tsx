@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Quiz from './Quiz';
 import { VscAccount } from "react-icons/vsc";
 import '../styles/Menu.css';
+import '../styles/bg.css'
 
 function Menu() 
 {

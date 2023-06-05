@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { TeacherMenuProps } from '../modules/TeacherMenuProps';
 import '../styles/TeacherMenu.css';
+import '../styles/bg.css'
 
 function TeacherMenu({ userData }: TeacherMenuProps)
 {

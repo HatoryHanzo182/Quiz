@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/TeacherMenu.css';
 import test from '../img/test.png'
+import '../styles/bg.css'
 
 function TMenu() {
   return (
@@ -38,30 +39,6 @@ function TMenu() {
  
 </div>
 
-
-{/* <div className="cont">
-<div className="card-wrapper">
-  <div className="card-header">
-    <div className="pic">
-      <img src="./test.png"></img>
-    </div>
-    <h3 className='name'>Alex Black</h3>
-  </div>
- </div>
- </div> */}
- 
-{/* 
- <div className="cont">
-<div className="card-wrapper">
-  <div className="card-header">
-    <div className="pic">
-      <img src="./test.png"></img>
-    </div>
-    <h3 className='name'>Alex Black</h3>
-  </div>
- </div>
-
- </div> */}
 
   
     </>

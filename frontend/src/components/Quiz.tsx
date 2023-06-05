@@ -4,6 +4,7 @@ import axios from 'axios';
 import Question from '../modules/Question'; 
 import { VscAccount } from "react-icons/vsc";
 import '../styles/Quiz.css';
+import '../styles/bg.css'
 
 const Quiz = () => {
   //useState Hook
