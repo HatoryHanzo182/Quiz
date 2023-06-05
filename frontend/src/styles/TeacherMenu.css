@@ -1,27 +1,114 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+  }
+
+  .pic {
+    
+    display: inline-block;
+    padding: 05px;
+
+
+  }
+  
+  .pic img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+
+  }
+
+  .text {
+    font-size: 25px;
+  }
+  /* Float four columns side by side */
+  .column {
+
+    display: flex;
+
+    float: left;
+    width: 40%;
+    padding: 0 10px;
+
+  }
+  
+  /* Remove extra left and right margins, due to padding
+  .cont {margin: 0 -5px;}
+  
+  /* Clear floats after the columns 
+  .cont:after {
+    content: "";
+    display: table;
+    clear: both;
+  } */
+  
+  /* Responsive columns */
+  @media screen and (max-width: 1200px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    height: 550px;
+    width: 550px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    border-radius: 25px;
+  }
+
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
 body {
-    background-color: black
+    background: linear-gradient(90deg,#2f1cff,#db5b6e);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.containerT {
-display: flex;
 
+.card-wrapper {
+    width: 320px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 14px;
 }
+
+
+
 
 .cont {
-    
+    display:flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 50px 0;
+    margin: 50px 50px;
+
+
 background-color: white;
 border-radius: 20px;
 margin: 10px 20px;
 height: 400px;
-flex: 1;
+
 
 }
-
-.cont2 {
-    background-color: #fff;
-    border-radius: 20px;
-    margin: 10px 20px;
-    height: 700px;
-    
-    flex: 1;
-}
+ */
