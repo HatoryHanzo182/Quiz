@@ -17,8 +17,9 @@ function App()
     <BrowserRouter>
       <Routes>
       <Route path="/" element={<Auth updateUserData={setUserData} />}/>
-      <Route path="/TeacherMenu" element={userData && <TMenu/>} />
+      <Route path="/TeacherMenu" element={userData && <TeacherMenu userData={userData} />} />
       <Route path="/Menu" element={<Menu />} />
+      <Route path="/TMenu" element={<TMenu/>} />
       <Route path="/Menu/Quiz/:quiz_id" element={ <Quiz />} />
       </Routes>
     </BrowserRouter>
