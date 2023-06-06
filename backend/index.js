@@ -15,6 +15,11 @@ app.use((req, res, next) =>  // Middleware for handling CORS.
   res.setHeader('Access-Control-Allow-Credentials', true);  
   next();
 });
+app.use((req, res, next) => 
+{
+  res.setHeader('Cache-Control', 'no-store, max-age=0');
+  next();
+});
 
 const DB_URL = "mongodb+srv://admin:5PPrcFfQcS3sHIBo@db.xl5bjqi.mongodb.net/QuizData?retryWrites=true&w=majority";
 const PORT =  3000 // process.env.PORT 
