@@ -1,30 +1,39 @@
-import React from 'react'
-import user from '../img/user.png'
-import '../styles/Profile.css'
-import '../styles/bg.css'
+import { useState, useEffect } from 'react';
+import User from "../modules/UserDataModel";
+import user from '../img/user.png';
+import '../styles/Profile.css';
+import '../styles/bg.css';
 
-function Profile() {
-  return (
-<>
-<body>
+function Profile() 
+{
+  const [userData, setUserData] = useState<User>();  // Hook to get user data. 
+
+  useEffect(() =>  // The hook runs after the page is loaded.
+  {
+    const ariownUserData = async () =>  // Get user data from browser local storage.
+    {
+      const storedUserData = localStorage.getItem('userData');
     
+      if (storedUserData) 
+        setUserData(JSON.parse(storedUserData));
+    }
 
-<div className="main">
-<div className="card-wrapper">
-    <div className="card-header">
-        <div className="pic">
-            <img src={user}></img>
+    ariownUserData();
+  }, []);
+
+  return (
+  <>
+    <div className="main">
+      <div className="card-wrapper">
+        <div className="card-header">
+          <div className="pic"><img src={user}></img></div>
+          <h3 className='name'>{userData?.name} {userData?.surname}</h3>
+          <h3 className="name">{userData?.login}</h3>
+          <h3 className="name">{userData?.email}</h3>
         </div>
-        <h3 className='name'>Name Surname</h3>
-        <h3 className="name">Login</h3>
-
-        <h3 className="name">test@gmail.com</h3>
+      </div>
     </div>
-</div>
-</div>
-</body>
-</>
-  )
+  </>)
 }
 
 export default Profile

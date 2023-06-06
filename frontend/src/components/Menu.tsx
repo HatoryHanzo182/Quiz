@@ -8,11 +8,17 @@ function Menu()
   const navigate = useNavigate();
 
   const handleQuizClick = (quiz_id: string) => { navigate(`/Menu/Quiz/${quiz_id}`); };  // Quiz transition event.
+  const handleProfileClick = (event: any) =>  // Profile transition event. 
+  {
+    event.preventDefault(); 
+
+    navigate(`/Menu/Profile`);
+  };
 
   return (
   <>
     <div className="navbar">
-      <a className='profile' href='.'><VscAccount size={25}></VscAccount></a>
+      <a className='profile' href='.' onClick={(event) => handleProfileClick(event)}><VscAccount size={25}></VscAccount></a>
     </div>
     <div className="ag-format-container">
       <div className="ag-courses_box">
