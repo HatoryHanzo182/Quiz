@@ -45,13 +45,13 @@ function Auth()
 
       if(role === "teacher")
       { 
-        localStorage.setItem('userData', JSON.stringify(user));
+        sessionStorage.setItem('userData', JSON.stringify(user));
 
         navigate('/TeacherMenu');
       }
       else if(role === "student")
       {
-        localStorage.setItem('userData', JSON.stringify(user));
+        sessionStorage.setItem('userData', JSON.stringify(user));
 
         navigate('/Menu');
       }

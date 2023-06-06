@@ -14,6 +14,14 @@ function Menu()
 
     navigate(`/Menu/Profile`);
   };
+  const handleExitClick = (event: React.MouseEvent<HTMLAnchorElement>) => 
+  {
+    event.preventDefault();
+    sessionStorage.removeItem('userData');
+    window.history.replaceState(null, '', '/');
+  
+    navigate('/');
+  };
 
   return (
   <>
@@ -65,6 +73,10 @@ function Menu()
       </a>
     </div>
     </div>
+    <a href="#" className='aExit' onClick = {handleExitClick}>
+      <span>Exit</span>
+      <div className="liquid"></div>
+    </a>
   </div>
   </>);
 }

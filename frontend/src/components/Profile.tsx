@@ -12,7 +12,7 @@ function Profile()
   {
     const ariownUserData = async () =>  // Get user data from browser local storage.
     {
-      const storedUserData = localStorage.getItem('userData');
+      const storedUserData = sessionStorage.getItem('userData');
     
       if (storedUserData) 
         setUserData(JSON.parse(storedUserData));
