@@ -30,8 +30,6 @@ body {
 
      
     
-   
-   
   }
 
   .score-section {
@@ -184,7 +182,7 @@ margin-top: 10px;
     margin-top: 20px;
     margin-right: 45px;
   }
-
+  
   .timer-section {
     position: fixed;
     top: 20px;
@@ -200,6 +198,30 @@ margin-top: 10px;
   }
 
   .error{
-    font-size: 13px;
-    color: #e90000;
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
   }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 1px;
+  }
+  
+  .form-container input {
+    margin-bottom: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  

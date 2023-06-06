@@ -92,13 +92,7 @@ const Quiz = () =>
       setShowScore(true);
   };
 
-  const resetQuiz = () => 
-  {
-    setCurrentQuestion(0);
-    setScore(0);
-    setShowScore(false);
-    setTime(900);
-  };
+  const exitQuiz = () => { navigate('/Menu'); };
 
   const handleInputChange = (event: any) => { setTeachersCode(event.target.value); };
 
@@ -141,13 +135,18 @@ const Quiz = () =>
     <div className="navbar"><a className='profile' href='.'><VscAccount size={25}></VscAccount></a></div>
     <div className="timer-section">{formatTime(time)}</div>
     <div className="app">{showScore ? (
-      <div className="score-section">You have scored {score} out of {questionBank.length}<>
-      <input type='text' placeholder='Teachers code' value={teachersCode} onChange={handleInputChange}></input>
-      {codeError && <span className="error">{codeError}</span>}
-      <button className="score-button" type="submit" onClick={resetQuiz}>Restart</button>
-      <button className="score-button" type="submit" onClick={sendResult}>Send code</button>
-  </>
-  </div>
+      <div className="score-section">You have scored {score} out of {questionBank.length}
+      <>
+        <div className="form-container">
+          <input type='text' placeholder='Teachers code' value={teachersCode} onChange={handleInputChange}></input>
+          {codeError && <span className="error">{codeError}</span>}
+          <div className="button-container">
+            <button className="score-button" type="submit" onClick={exitQuiz}>Back to menu</button>
+            <button className="score-button" type="submit" onClick={sendResult}>Send code</button>
+          </div>
+        </div>
+      </>
+    </div>
   ) : (
     <div>
       <div className="question-section">
