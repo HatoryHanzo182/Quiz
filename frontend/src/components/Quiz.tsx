@@ -137,7 +137,8 @@ const Quiz = () =>
     <div className="navbar"><a className='profile' href='.'><VscAccount size={25}></VscAccount></a></div>
     <div className="timer-section">{formatTime(time)}</div>
     <div className="app">{showScore ? (
-      <div className="score-section">You have scored {score} out of {questionBank.length}
+      <div className="score-section">You have {score} correct answers out of {questionBank.length} <br/>
+        Your score: {`${Math.round((((score / questionBank.length) * 100) / 100) * 12)}`} 
       <>
         <div className="form-container">
           <input type='text' placeholder='Teachers code' value={teachersCode} onChange={handleInputChange}></input>

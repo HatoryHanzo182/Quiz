@@ -21,6 +21,12 @@ function Profile()
     ariownUserData();
   }, []);
 
+  const handleExitClick = (event: React.MouseEvent<HTMLAnchorElement>) => 
+  {
+    event.preventDefault();
+    window.history.replaceState(null, '', '/');
+  };
+
   return (
   <>
     <div className="main">
