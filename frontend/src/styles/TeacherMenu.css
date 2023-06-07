@@ -2,7 +2,17 @@
     box-sizing: border-box;
   }
   
-
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Высота контейнера на весь экран */
+  }
+  
+  .content {
+    text-align: center;
+  }
+  
 
   .pic {
     
@@ -162,4 +172,9 @@ tr:last-child td:last-child {
 
 tr td:last-child {
   border-right: none;
+}
+
+.aExit {
+  margin-left: 500px;
+  margin-top: -300px;
 }

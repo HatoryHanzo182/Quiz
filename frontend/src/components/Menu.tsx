@@ -19,7 +19,7 @@ function Menu()
     event.preventDefault();
     sessionStorage.removeItem('userData');
     window.history.replaceState(null, '', '/');
-  
+    
     navigate('/');
   };
 

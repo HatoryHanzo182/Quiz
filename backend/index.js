@@ -17,7 +17,9 @@ app.use((req, res, next) =>  // Middleware for handling CORS.
 });
 app.use((req, res, next) => 
 {
-  res.setHeader('Cache-Control', 'no-store, max-age=0');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
   next();
 });
 

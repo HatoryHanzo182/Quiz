@@ -30,6 +30,8 @@ const Quiz = () =>
     
       if (storedUserData) 
         setUserData(JSON.parse(storedUserData));
+      else
+        navigate('/')
     }
 
     const fetchQuizData = async () =>  // In the method we read data from the database.

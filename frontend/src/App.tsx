@@ -16,6 +16,7 @@ function App()
         <Route path="/Menu" element={<Menu/>}/>
         <Route path="/TeacherMenu" element={<TeacherMenu/>}/>
         <Route path="/Menu/Profile" element={<Profile />} />
+        <Route path="/TeacherMenu/Profile" element={<Profile />} />
         <Route path="/Menu/Quiz/:quiz_id" element={<Quiz />}/>
       </Routes>
     </BrowserRouter>
