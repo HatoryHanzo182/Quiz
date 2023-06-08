@@ -88,10 +88,6 @@ function TeacherMenu()
                 </table>
             </div>
         </div>
-        <a href="#" className='aExitT' onClick = {handleExitClick}>
-            <span>Exit</span>
-            <div className="liquid"></div>
-        </a>
     </>)
 } 
 

@@ -19,7 +19,9 @@ const Quiz = () =>
   const [time, setTime] = useState(900);  // Hook to get the actual time for the timer.
   const [teachersCode, setTeachersCode] = useState('');
   const [codeError, setCodeError] = useState('');
-  
+  const [showAnswerHistory, setShowAnswerHistory] = useState(false);
+  const [answerHistory, setAnswerHistory] = useState<{ question: string; userAnswer: string | undefined; correctAnswer: string | undefined; }[]>([]);
+
   const navigate = useNavigate();  // Navigation to transfer to the menu after the end of the quiz.
   
   useEffect(() =>  // The hook runs after the page is loaded.
@@ -85,6 +87,15 @@ const Quiz = () =>
   {
     if (isCorrect)
       setScore(score + 1);
+    
+      const answeredQuestion = questionBank[currentQuestion];
+      const answerData = 
+      {
+        question: answeredQuestion.question,
+        userAnswer: answeredQuestion.answers.find(answer => answer.isCorrect === isCorrect)?.answer,
+        correctAnswer: answeredQuestion.answers.find(answer => answer.isCorrect)?.answer
+      };
+      setAnswerHistory(prevHistory => [...prevHistory, answerData]);
 
     const nextQuestion = currentQuestion + 1;
     
@@ -117,7 +128,9 @@ const Quiz = () =>
           grade: `${Math.round((((score / questionBank.length) * 100) / 100) * 12)}`, 
           student: `${userData?.name} ${userData?.surname}`,
           travel_time: formatTime(900 - time),
-          date: `${currentDate.toDateString()}`
+          date: `${currentDate.toDateString()}`,
+          answer_history: answerHistory,
+          verified: 'false'
         }
 
         await axios.post('http://localhost:3000/results', new_result);
@@ -141,11 +154,15 @@ const Quiz = () =>
     navigate(`/Menu/Profile`);
   };
 
-  const handleHomeClick = (event:any) => {
+  const handleHomeClick = (event:any) => 
+  {
     event.preventDefault();
 
-    navigate(`/Menu/`);
+    navigate(`/Menu`);
   }
+
+  const toggleAnswerHistory = () => { setShowAnswerHistory(prevState => !prevState); };
+  
   return (
   <>
     <div className="navbar">
@@ -165,7 +182,26 @@ const Quiz = () =>
             <button className="score-button" type="submit" onClick={exitQuiz}>Back to menu</button>
             <button className="score-button" type="submit" onClick={sendResult}>Send code</button>
           </div>
+          <button className="anser-button" onClick={toggleAnswerHistory}>Show Answer History</button>
         </div>
+        {showAnswerHistory && (
+        <div className="answer-history-panel">
+          <button className="score-button" onClick={toggleAnswerHistory}>Close</button>
+          <div className="answer-history">
+            {answerHistory.map((answer, index) => 
+            (
+              <div key={index}>
+                <hr />
+                <br />
+                <p>{answer.question}</p>
+                <p className={answer.userAnswer === answer.correctAnswer ? "correct" : "incorrect"}>Your answer: {answer.userAnswer}</p>
+                <p className='correct'>Correct answer: {answer.correctAnswer}</p>
+                <br />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       </>
     </div>
   ) : (

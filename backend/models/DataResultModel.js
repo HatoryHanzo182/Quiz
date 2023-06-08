@@ -8,6 +8,15 @@ const resultSchema = new mongoose.Schema(
     student: String,
     travel_time: String,
     date: String,
+    answer_history: 
+    [
+        {
+          question: String,
+          userAnswer: String,
+          correctAnswer: String
+        }
+    ],
+    verified: String
 });
 
 const Result = mongoose.model('results', resultSchema);
