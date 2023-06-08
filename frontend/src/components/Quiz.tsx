@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { VscAccount } from "react-icons/vsc";
+import { VscAccount,VscHome } from "react-icons/vsc";
 import axios from 'axios';
 import User from "../modules/UserDataModel";
 import Question from '../modules/QuestionModel'; 
@@ -132,9 +132,27 @@ const Quiz = () =>
   }
 
   if (questionBank.length === 0) { return <div>Loading...</div>;}
+
+
+  const handleProfileClick = (event: any) =>  // Profile transition event. 
+  {
+    event.preventDefault(); 
+
+    navigate(`/Menu/Profile`);
+  };
+
+  const handleHomeClick = (event:any) => {
+    event.preventDefault();
+
+    navigate(`/Menu/`);
+  }
   return (
   <>
-    <div className="navbar"><a className='profile' href='.'><VscAccount size={25}></VscAccount></a></div>
+    <div className="navbar">
+      <a className='home' href='.' onClick={(event) => handleHomeClick(event)}><VscHome size={25}></VscHome></a>
+      <a className='profile' href='.' onClick={(event) => handleProfileClick(event)}><VscAccount size={25}></VscAccount></a>
+    </div>
+   
     <div className="timer-section">{formatTime(time)}</div>
     <div className="app">{showScore ? (
       <div className="score-section">You have {score} correct answers out of {questionBank.length} <br/>

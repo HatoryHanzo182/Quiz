@@ -158,5 +158,10 @@
 
 
 .home {
+  margin-top: 10px;
   margin-right: 10px;
+}
+
+.profile {
+  margin-top: 10px;
 }
