@@ -58,11 +58,14 @@ function TeacherMenu()
         <div className="navbar">
           <a className="profile" href="." onClick={(event) => handleProfileClick(event)}>
             <VscAccount size={25} />
+            
           </a>
         </div>
-        <div className="container">
+       
+<div className="mycent">
+        <div className="container1">
           <div className="content">
-            <h1 className={userData && userData.teacher_code.toString()}>Teacher code: {userData && userData.teacher_code}</h1>
+             <h1 className={userData && userData.teacher_code.toString()}>Teacher code: {userData && userData.teacher_code}</h1>
             <table>
               <thead>
                 <tr>
@@ -104,6 +107,7 @@ function TeacherMenu()
             )}
           </div>
         </div>
+      </div>
       </div>
     </>)
 } 
