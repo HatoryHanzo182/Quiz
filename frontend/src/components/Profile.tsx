@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import User from "../modules/UserDataModel";
 import user from '../img/user.png';
 import '../styles/Profile.css';
@@ -21,10 +22,14 @@ function Profile()
     ariownUserData();
   }, []);
 
+  const navigate = useNavigate();
   const handleExitClick = (event: React.MouseEvent<HTMLAnchorElement>) => 
   {
     event.preventDefault();
+    sessionStorage.removeItem('userData');
     window.history.replaceState(null, '', '/');
+
+    navigate('/');
   };
 
   return (

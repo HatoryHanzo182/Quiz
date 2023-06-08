@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { VscAccount } from "react-icons/vsc";
+
+import { VscAccount,VscHome } from "react-icons/vsc";
 import '../styles/Menu.css';
 import '../styles/bg.css'
 
@@ -14,18 +15,19 @@ function Menu()
 
     navigate(`/Menu/Profile`);
   };
-  const handleExitClick = (event: React.MouseEvent<HTMLAnchorElement>) => 
-  {
-    event.preventDefault();
-    sessionStorage.removeItem('userData');
-    window.history.replaceState(null, '', '/');
 
-    navigate('/');
-  };
+  const handleHomeClick = (event:any) => {
+    event.preventDefault();
+
+    navigate(`/Menu/`);
+  }
+ 
 
   return (
   <>
+
     <div className="navbar">
+      <a className='home' href='.' onClick={(event) => handleHomeClick(event)}><VscHome size={25}></VscHome></a>
       <a className='profile' href='.' onClick={(event) => handleProfileClick(event)}><VscAccount size={25}></VscAccount></a>
     </div>
     <div className="ag-format-container">
