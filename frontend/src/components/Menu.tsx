@@ -1,12 +1,26 @@
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { VscAccount,VscHome } from "react-icons/vsc";
+import User  from '../modules/UserDataModel';
 import '../styles/Menu.css';
 import '../styles/bg.css'
 
 function Menu() 
 {
+  const [userData, setUserData] = useState<User>();  // Hook to get user data.
   const navigate = useNavigate();
+
+  useEffect(() =>  // Hook for processing data when the page is fully loaded.
+  {
+      const ariownUserData = async () =>  // Get teacher data from browser local storage.
+      {
+          const storedUserData = sessionStorage.getItem('userData');
+          if (storedUserData) 
+              setUserData(JSON.parse(storedUserData));
+          else
+              navigate('/')
+      }
+  });
 
   const handleQuizClick = (quiz_id: string) => { navigate(`/Menu/Quiz/${quiz_id}`); };  // Quiz transition event.
   const handleProfileClick = (event: any) =>  // Profile transition event. 
