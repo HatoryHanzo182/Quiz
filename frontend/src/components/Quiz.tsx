@@ -169,7 +169,7 @@ const Quiz = () =>
       <a className='home' href='.' onClick={(event) => handleHomeClick(event)}><VscHome size={25}></VscHome></a>
       <a className='profile' href='.' onClick={(event) => handleProfileClick(event)}><VscAccount size={25}></VscAccount></a>
     </div>
-   
+
     <div className="timer-section">{formatTime(time)}</div>
     <div className="app">{showScore ? (
       <div className="score-section">You have {score} correct answers out of {questionBank.length} <br/>
