@@ -73,10 +73,7 @@ function Menu()
       </a>
     </div>
     </div>
-    <a href="#" className='aExit' onClick = {handleExitClick}>
-      <span>Exit</span>
-      <div className="liquid"></div>
-    </a>
+    
   </div>
   </>);
 }

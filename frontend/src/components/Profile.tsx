@@ -37,6 +37,10 @@ function Profile()
           <h3 className="name">{userData?.login}</h3>
           <h3 className="name">{userData?.email}</h3>
         </div>
+        <a href="#" className='aExit' onClick = {handleExitClick}>
+      <span>Exit</span>
+      <div className="liquid"></div>
+    </a>
       </div>
     </div>
   </>)
