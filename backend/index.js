@@ -118,6 +118,26 @@ app.get('/results', async (req, res) =>
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+app.put('/results/:id', async (req, res) => 
+{
+  try {
+    const resultId = req.params.id;
+    const updatedResult = req.body;
+    const existingResult = await DataResultModel.findById(resultId);
+
+    if (!existingResult) { return res.status(404).json({ error: 'Result not found' }); }
+
+    existingResult.verified = updatedResult.verified;
+
+    await existingResult.save();
+
+    res.json(existingResult);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 //=============================================================================================
 
 const start = async () => 

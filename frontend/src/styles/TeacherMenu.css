@@ -120,3 +120,20 @@ tr td:last-child {
   background-color: black;
   border-radius: 4px;
 }
+
+/*style for the new result*/
+.student-cell {
+  position: relative;
+}
+
+.new-result-label {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  background-color: #ff0000;
+  color: #ffffff;
+  margin-right: 10px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+}
