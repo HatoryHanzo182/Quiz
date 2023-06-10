@@ -64,6 +64,7 @@ function Profile()
       <span>Exit</span>
       <div className="liquid"></div>
     </a>
+
       </div>
     </div>
   </>)
