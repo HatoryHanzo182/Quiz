@@ -1,8 +1,8 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import UserModel from './models/UserModel.js';
-import DataResultModel from './models/DataResultModel.js';
 import QuizModel from './models/QuizModel.js';
+import DataResultModel from './models/DataResultModel.js';
 
 const app = express()
 
@@ -121,19 +121,19 @@ app.get('/results', async (req, res) =>
 
 app.put('/results/:id', async (req, res) => 
 {
-  try {
-    const resultId = req.params.id;
-    const updatedResult = req.body;
-    const existingResult = await DataResultModel.findById(resultId);
+  try 
+  {
+    const { id } = req.params;
+    const { verified } = req.body;
+
+    const existingResult = await DataResultModel.findByIdAndUpdate(id, { verified }, { new: true });
 
     if (!existingResult) { return res.status(404).json({ error: 'Result not found' }); }
 
-    existingResult.verified = updatedResult.verified;
-
-    await existingResult.save();
-
     res.json(existingResult);
-  } catch (error) {
+  } 
+  catch (error) 
+  {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -144,12 +144,13 @@ const start = async () =>
 {
   try 
   {
-    await mongoose.connect(DB_URL)
+    await mongoose.connect(DB_URL);
 
-    console.log(mongoose.connection.readyState)
-    app.listen(PORT, () => { console.log(`Server listening on port ${PORT}`)})
+    console.log(mongoose.connection.readyState);
+
+    app.listen(PORT, () => { console.log(`Server listening on port ${PORT}`)});
   } 
-  catch (error) { console.log(error)}
+  catch (error) { console.log(error);}
 }
 
 start()

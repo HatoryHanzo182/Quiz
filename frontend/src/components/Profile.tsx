@@ -48,7 +48,7 @@ function Profile()
 
   return (
   <>
-  <div className="navbar">
+  <div className="  ">
       <a className='home' href='.' onClick={(event) => handleHomeClick(event)}><VscHome size={25}></VscHome></a>
       <a className='profile' href='.' onClick={(event) => handleProfileClick(event)}><VscAccount size={25}></VscAccount></a>
     </div>
