@@ -4,6 +4,7 @@ import TeacherMenu from './components/TeacherMenu';
 import Menu from './components/Menu';
 import Quiz from './components/Quiz';
 import Profile from './components/Profile';
+import AnswerHistory from './components/AnswerHistory';
 import './App.css';
 
 
@@ -19,6 +20,7 @@ function App()
         <Route path="/Menu/Profile" element={<Profile />} />
         <Route path="/TeacherMenu/Profile" element={<Profile />} />
         <Route path="/Menu/Quiz/:quiz_id" element={<Quiz />}/>
+        <Route path="/Menu/Quiz/:quiz_id/AnswerHistory" element={<AnswerHistory />}/>
       </Routes>
     </BrowserRouter>
 

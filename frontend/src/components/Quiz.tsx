@@ -19,7 +19,6 @@ const Quiz = () =>
   const [time, setTime] = useState(900);  // Hook to get the actual time for the timer.
   const [teachersCode, setTeachersCode] = useState('');
   const [codeError, setCodeError] = useState('');
-  const [showAnswerHistory, setShowAnswerHistory] = useState(false);
   const [answerHistory, setAnswerHistory] = useState<{ question: string; userAnswer: string | undefined; correctAnswer: string | undefined; }[]>([]);
 
   const navigate = useNavigate();  // Navigation to transfer to the menu after the end of the quiz.
@@ -31,7 +30,10 @@ const Quiz = () =>
       const storedUserData = sessionStorage.getItem('userData');
     
       if (storedUserData) 
+      {
         setUserData(JSON.parse(storedUserData));
+        sessionStorage.removeItem('ansHistory');
+      }
       else
         navigate('/')
     }
@@ -161,7 +163,12 @@ const Quiz = () =>
     navigate(`/Menu`);
   }
 
-  const toggleAnswerHistory = () => { setShowAnswerHistory(prevState => !prevState); };
+  const toggleAnswerHistory = () => 
+  { 
+    sessionStorage.setItem('ansHistory', JSON.stringify(answerHistory));
+    
+    window.open(`/Menu/Quiz/${quiz_id}/AnswerHistory`, '_blank');
+  };
   
   return (
   <>
@@ -184,24 +191,6 @@ const Quiz = () =>
           </div>
           <button className="anser-button" onClick={toggleAnswerHistory}>Show Answer History</button>
         </div>
-        {showAnswerHistory && (
-        <div className="answer-history-panel">
-          <button className="score-button" onClick={toggleAnswerHistory}>Close</button>
-          <div className="answer-history">
-            {answerHistory.map((answer, index) => 
-            (
-              <div key={index}>
-                <hr />
-                <br />
-                <p>{answer.question}</p>
-                <p className={answer.userAnswer === answer.correctAnswer ? "correct" : "incorrect"}>Your answer: {answer.userAnswer}</p>
-                <p className='correct'>Correct answer: {answer.correctAnswer}</p>
-                <br />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
       </>
     </div>
   ) : (

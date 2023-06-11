@@ -15,11 +15,14 @@ function Menu()
       const ariownUserData = async () =>  // Get teacher data from browser local storage.
       {
           const storedUserData = sessionStorage.getItem('userData');
+          
           if (storedUserData) 
               setUserData(JSON.parse(storedUserData));
           else
               navigate('/')
       }
+
+      ariownUserData();
   });
 
   const handleQuizClick = (quiz_id: string) => { navigate(`/Menu/Quiz/${quiz_id}`); };  // Quiz transition event.
