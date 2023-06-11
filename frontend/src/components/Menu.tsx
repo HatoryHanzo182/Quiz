@@ -33,18 +33,10 @@ function Menu()
     navigate(`/Menu/Profile`);
   };
 
-  const handleHomeClick = (event:any) => {
-    event.preventDefault();
-
-    navigate(`/Menu/`);
-  }
- 
-
   return (
   <>
 
     <div className="navbar">
-      <a className='home' href='.' onClick={(event) => handleHomeClick(event)}><VscHome size={25}></VscHome></a>
       <a className='profile' href='.' onClick={(event) => handleProfileClick(event)}><VscAccount size={25}></VscAccount></a>
     </div>
     <div className="ag-format-container">

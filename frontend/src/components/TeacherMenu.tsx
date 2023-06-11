@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 import { VscAccount } from "react-icons/vsc";
 import User from '../modules/UserDataModel';
 import Result from '../modules/ResultModel';
@@ -15,7 +14,6 @@ function TeacherMenu()
     const [selectedStudent, setSelectedStudent] = useState<Result | null>(null);
 
     const navigate = useNavigate();
-    const location = useLocation();
 
     useEffect(() =>  // Hook for processing data when the page is fully loaded.
     {
@@ -72,6 +70,26 @@ function TeacherMenu()
         }).catch((error) => { console.error("Error updating student verification:", error); });
       }
     };
+
+    if (!resultsQuizzes || resultsQuizzes.length === 0)
+    {
+      return (
+      <>
+        <div>
+          <div className="navbar">
+            <a className="profile" href="." onClick={(event) => handleProfileClick(event)}><VscAccount size={25} /></a>
+          </div>
+          <div className="mycent">
+            <div className="container1">
+              <div className="content">
+                <h1 className={userData && userData.teacher_code.toString()}>Teacher code: {userData && userData.teacher_code}</h1>
+                <h2>You don't have new results</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>)
+    }
 
     return(
       <>

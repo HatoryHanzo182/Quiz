@@ -345,7 +345,7 @@ function Auth()
             <div className="shape"></div> 
           </div> */}
           <form>
-            <h3>Auth</h3>
+            <h3>Sign in to your account</h3>
             <label htmlFor="username">Username</label>
             <input type="text" placeholder="Login" id="username" value={login} onChange={(e) => setLogin(e.target.value)} />
             {loginError && <span className="error">{loginError}</span>}

@@ -146,16 +146,6 @@ const Quiz = () =>
     catch(error) {  console.error('Error while getting data:', error); };
   }
 
-  if (questionBank.length === 0) { return <div>Loading...</div>;}
-
-
-  const handleProfileClick = (event: any) =>  // Profile transition event. 
-  {
-    event.preventDefault(); 
-
-    navigate(`/Menu/Profile`);
-  };
-
   const handleHomeClick = (event:any) => 
   {
     event.preventDefault();
@@ -169,12 +159,22 @@ const Quiz = () =>
     
     window.open(`/Menu/Quiz/${quiz_id}/AnswerHistory`, '_blank');
   };
+
+  if(questionBank.length === 0) 
+  { 
+    return(
+      <>
+        <div className="loader">
+          <div className="loader-text">Loading...</div>
+          <div className="loader-bar"></div>
+        </div>
+      </>)
+  }
   
   return (
   <>
     <div className="navbar">
       <a className='home' href='.' onClick={(event) => handleHomeClick(event)}><VscHome size={25}></VscHome></a>
-      <a className='profile' href='.' onClick={(event) => handleProfileClick(event)}><VscAccount size={25}></VscAccount></a>
     </div>
 
     <div className="timer-section">{formatTime(time)}</div>
