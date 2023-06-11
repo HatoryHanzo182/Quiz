@@ -33,10 +33,14 @@ function Profile()
     navigate('/');
   };
 
-  const handleHomeClick = (event:any) => {
+  const handleHomeClick = (event:any) => 
+  {
     event.preventDefault();
 
-    navigate(`/Menu/`);
+    if(userData?.teacher_code === 'null')
+      navigate(`/Menu`);
+    else
+      navigate(`/TeacherMenu`);
   };
 
   const handleProfileClick = (event: any) =>  // Profile transition event. 
