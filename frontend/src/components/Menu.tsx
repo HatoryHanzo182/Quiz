@@ -68,7 +68,7 @@ function Menu()
       </a>
     </div>
     <div className="ag-courses_item">
-      <a  className="ag-courses-item_link">
+      <a  className="ag-courses-item_link" onClick={()=> handleQuizClick("648641ae880214b8b026a1e6")}>
         <div className="ag-courses-item_bg"></div>
         <div className="ag-courses-item_title">Quiz JavaScript</div>
       </a>
