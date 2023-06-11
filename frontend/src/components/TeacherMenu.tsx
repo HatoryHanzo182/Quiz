@@ -61,26 +61,26 @@ function TeacherMenu()
         const updatedResults = resultsQuizzes.map((s) => s._id === student._id ? updatedStudent : s);
     
         setResultsQuizzes(updatedResults);
-    
-        axios.put(`http://localhost:3000/results/${student.id}`, { verified: "true" })
-          .then(() => 
-          {
-            const updatedResultsLocal = resultsQuizzes.map((s) => s._id === student._id ? updatedStudent : s);
 
-            setResultsQuizzes(updatedResultsLocal);
-          })
-          .catch((error) => { console.error("Error updating student verification:", error); });
+        console.log(student._id);
+
+        axios.put(`http://localhost:3000/results/${student._id}`, { verified: "true" }).then(() => 
+        {
+          const updatedResultsLocal = resultsQuizzes.map((s) => s._id === student._id ? updatedStudent : s);
+
+          setResultsQuizzes(updatedResultsLocal);
+        }).catch((error) => { console.error("Error updating student verification:", error); });
       }
     };
 
     return(
       <>
       <div>
-        {/* <div className="navbar">
+        <div className="navbar">
           <a className="profile" href="." onClick={(event) => handleProfileClick(event)}>
             <VscAccount size={25} />
           </a>
-        </div> */}
+        </div>
         <div className="mycent">
           <div className="container1">
             <div className="content">
@@ -96,7 +96,7 @@ function TeacherMenu()
                   </tr>
                 </thead>
                 <tbody>
-                  {resultsQuizzes.map((student) => (
+                  {resultsQuizzes.slice().reverse().map((student) => (
                     <tr key={student._id.toString()} onClick={() => handleRowClick(student)}>
                       <td className="student-cell">
                         {student.verified === "false" && <span className="new-result-label">New</span>}

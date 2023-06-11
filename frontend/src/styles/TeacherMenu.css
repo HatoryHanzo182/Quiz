@@ -17,8 +17,8 @@
     border-radius: 25px;
     padding: 10px;
     width: 120vh;
-    height: 100vh; /* Высота контейнера на весь экран */
-
+    height: auto; /* Высота контейнера на весь экран */
+    max-height: 95vh;
   }
   
 
