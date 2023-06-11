@@ -37,26 +37,25 @@ function AnswerHistory()
     })
 
     return (
-        <>
-        <div className="content">
-        <div className="content-ah">
-            
-            {answerHistory.map((answer, index) => 
-            (
-              <div key={index}>
-                <hr />
-                <br />
-                <p>{answer.question}</p>
-                <p className={answer.userAnswer === answer.correctAnswer ? "correct" : "incorrect"}>Your answer: {answer.userAnswer}</p>
-                <p className='correct'>Correct answer: {answer.correctAnswer}</p>
-                <br />
-              </div>
-            ))}
-
-          </div>
-          </div>
-        </>
-    )
+    <>
+      <div className="card">
+        <h1>Answers</h1>
+  <div className="card-content">
+    {answerHistory.map((answer, index) => (
+      <div key={index}>
+        <hr />
+        <br />
+        <p>{answer.question}</p>
+        <p className={answer.userAnswer === answer.correctAnswer ? "correct" : "incorrect"}>
+          Your answer: {answer.userAnswer}
+        </p>
+        <p className="correct">Correct answer: {answer.correctAnswer}</p>
+        <br />
+      </div>
+    ))}
+  </div>
+</div>
+    </>)
 }
 
 export default AnswerHistory;
