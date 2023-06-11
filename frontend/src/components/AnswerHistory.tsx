@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import User from "../modules/UserDataModel";
+import '../styles/AnswerHistory.css';
 import '../styles/Quiz.css';
-import '../styles/bg.css'
+import '../styles/bg.css';
 
 function AnswerHistory()
 {
@@ -37,7 +38,9 @@ function AnswerHistory()
 
     return (
         <>
-            <div className="answer-history">
+        <div className="content">
+        <div className="content-ah">
+            
             {answerHistory.map((answer, index) => 
             (
               <div key={index}>
@@ -49,6 +52,8 @@ function AnswerHistory()
                 <br />
               </div>
             ))}
+
+          </div>
           </div>
         </>
     )
