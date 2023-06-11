@@ -76,11 +76,11 @@ function TeacherMenu()
     return(
       <>
       <div>
-        <div className="navbar">
+        {/* <div className="navbar">
           <a className="profile" href="." onClick={(event) => handleProfileClick(event)}>
             <VscAccount size={25} />
           </a>
-        </div>
+        </div> */}
         <div className="mycent">
           <div className="container1">
             <div className="content">

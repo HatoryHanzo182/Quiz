@@ -307,6 +307,7 @@ function Auth()
 
   return (
     <>
+
       {showRegistration ? (
         <div>
           {/* <div className="background">
@@ -355,7 +356,9 @@ function Auth()
             <button className="authbtn" onClick={ShowRegistrationPlateClick}>Registration</button>
           </form>
         </div>
+
       )}
+
     </>
   );
 }

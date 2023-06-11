@@ -55,12 +55,12 @@ function Profile()
     <div className="main">
       <div className="card-wrapper">
         <div className="card-header">
-          <div className="pic"><img src={user}></img></div>
+          <div className="pic"><img src={user} alt='user'></img></div>
           <h3 className='name'>{userData?.name} {userData?.surname}</h3>
           <h3 className="name">{userData?.login}</h3>
           <h3 className="name">{userData?.email}</h3>
         </div>
-        <a href="#" className='aExit' onClick = {handleExitClick}>
+        <a href="." className='aExit' onClick = {handleExitClick}>
       <span>Exit</span>
       <div className="liquid"></div>
     </a>
