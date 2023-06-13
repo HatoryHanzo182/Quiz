@@ -1,5 +1,2 @@
-Волков - backend 
 
-
-
-Чермалых - frontend 
+#QUIZ
