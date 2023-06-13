@@ -7,8 +7,6 @@ import Profile from './components/Profile';
 import AnswerHistory from './components/AnswerHistory';
 import './App.css';
 
-
-
 function App() 
 {
   return (

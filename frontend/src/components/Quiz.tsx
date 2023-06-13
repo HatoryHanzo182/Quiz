@@ -42,7 +42,7 @@ const Quiz = () =>
     {
         try 
         {
-          const response = await axios.get(`http://localhost:3000/quizzes/${quiz_id}`);
+          const response = await axios.get(`http://localhost:3000/quizes/${quiz_id}`);
           const quizData = response.data;
           
           setQuizTitle(quizData.title);

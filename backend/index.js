@@ -15,21 +15,21 @@ app.use((req, res, next) =>  // Middleware for handling CORS.
   res.setHeader('Access-Control-Allow-Credentials', true);  
   next();
 });
-app.use((req, res, next) => 
-{
-  res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  next();
-});
+// app.use((req, res, next) => 
+// {
+//   res.setHeader('Cache-Control', 'no-cache');
+//   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+//   res.setHeader('Pragma', 'no-cache');
+//   next();
+// });
 
-const DB_URL = "mongodb+srv://admin:5PPrcFfQcS3sHIBo@db.xl5bjqi.mongodb.net/QuizData?retryWrites=true&w=majority";
+const DB_URL = "mongodb+srv://scrinnpowerapp:s1o1yNojqIiHTyRg@quizcluster.plcezio.mongodb.net/QuizDB?retryWrites=true&w=majority";
 const PORT =  3000 // process.env.PORT 
 
 // QUIZ REQUESTS.
 //=============================================================================================
         // To get a quiz under a specific id.
-app.get('/quizzes/:id', async (req, res) =>  
+app.get('/quizes/:id', async (req, res) =>  
 {
   try 
   {
