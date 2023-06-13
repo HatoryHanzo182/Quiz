@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+ // This code defines the schema and model for the "results" collection in MongoDB, 
+// which allows you to work with the data in this collection through Mongoose.
 const resultSchema = new mongoose.Schema(
 {
     teacher_code: String,
@@ -10,11 +12,11 @@ const resultSchema = new mongoose.Schema(
     date: String,
     answer_history: 
     [
-        {
-          question: String,
-          userAnswer: String,
-          correctAnswer: String
-        }
+      {
+        question: String,
+        userAnswer: String,
+        correctAnswer: String
+      }
     ],
     verified: String
 });

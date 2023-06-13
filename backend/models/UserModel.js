@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+ // This code defines the schema and model for the "users" collection in MongoDB, 
+// which allows you to work with user data in this collection through Mongoose.
 const userSchema = new mongoose.Schema(
 {
     name: String,

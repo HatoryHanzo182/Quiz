@@ -4,9 +4,28 @@ import UserModel from './models/UserModel.js';
 import QuizModel from './models/QuizModel.js';
 import DataResultModel from './models/DataResultModel.js';
 
+//                                          SERVER
+//========================================================================================================================
+// This code was created to set up and start the Express web server, handle HTTP requests, 
+// and interact with the MongoDB database.
+//
+//                                                 Route Handlers.
+//   ----------------------------------------------------------------------------------------------------------------------
+//     * app.post('//quizes/:id', async (req, res) => { ... }): Route handler for get a quiz.
+//     * app.post('/users', async (req, res) => { ... }): Route handler for adding a new user.
+//     * app.post('/results', async (req, res) => { ... }): Route handler to add the result to the collection.
+//     * app.get('/results', async (req, res) => { ... }): Route handler to get result data.
+//     * app.put('/results/:id', async (req, res) => { ... }): Route handler to update the result data at the specified id.
+//   ----------------------------------------------------------------------------------------------------------------------
+// 
+// Thus, this code file sets up the Express web server, defines routes for handling HTTP requests, 
+// interacts with MongoDB using Mongoose, and handles errors when working with the database.
+//
+//=========================================================================================================================
+
 const app = express()
 
-app.use(express.json())
+app.use(express.json());
 app.use((req, res, next) =>  // Middleware for handling CORS. 
 {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
@@ -15,16 +34,9 @@ app.use((req, res, next) =>  // Middleware for handling CORS.
   res.setHeader('Access-Control-Allow-Credentials', true);  
   next();
 });
-// app.use((req, res, next) => 
-// {
-//   res.setHeader('Cache-Control', 'no-cache');
-//   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-//   res.setHeader('Pragma', 'no-cache');
-//   next();
-// });
 
 const DB_URL = "mongodb+srv://scrinnpowerapp:s1o1yNojqIiHTyRg@quizcluster.plcezio.mongodb.net/QuizDB?retryWrites=true&w=majority";
-const PORT =  3000 // process.env.PORT 
+const PORT =  3000
 
 // QUIZ REQUESTS.
 //=============================================================================================
@@ -91,7 +103,7 @@ app.post('/results', async (req, res) =>
   try 
   {
     const newResult = req.body;
-    const result = new DataResultModel(newResult);
+    const result = new DataResultModel(newResult);                                          
     
     await result.save();
     
@@ -119,6 +131,7 @@ app.get('/results', async (req, res) =>
   }
 });
 
+        // Get result data on id.
 app.put('/results/:id', async (req, res) => 
 {
   try 
@@ -153,4 +166,4 @@ const start = async () =>
   catch (error) { console.log(error);}
 }
 
-start()
+start();
