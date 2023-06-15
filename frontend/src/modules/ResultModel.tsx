@@ -1,3 +1,5 @@
+ // The "Result" interface defines the structure of a quiz result object containing information about the teacher,
+// the quiz, the student, the answers to the questions, and other details of the result.
 interface Result
 {
   _id: String;

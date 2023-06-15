@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Auth from './components/Auth';
-import TeacherMenu from './components/TeacherMenu';
 import Menu from './components/Menu';
-import Quiz from './components/Quiz';
+import TeacherMenu from './components/TeacherMenu';
 import Profile from './components/Profile';
+import Quiz from './components/Quiz';
 import AnswerHistory from './components/AnswerHistory';
-import './App.css';
 
 function App() 
 {
@@ -21,7 +20,6 @@ function App()
         <Route path="/Menu/Quiz/:quiz_id/AnswerHistory" element={<AnswerHistory />}/>
       </Routes>
     </BrowserRouter>
-
   );
 }
 
