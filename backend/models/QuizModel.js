@@ -1,6 +1,8 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
-const quizSchema = new Schema(  // Quiz model.
+ // This code is used to define the schema and model for the "quizes" 
+// collection in MongoDB using Mongoose.
+const quizSchema = new Schema( 
 {
   id: String,
   title: String,
@@ -12,6 +14,6 @@ const quizSchema = new Schema(  // Quiz model.
   ],
 });
 
-const Quiz = mongoose.model('quizes', quizSchema);  // Create a Quiz Model.
+const Quiz = mongoose.model('quizes', quizSchema);
 
 export default Quiz;
