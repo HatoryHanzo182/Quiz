@@ -306,14 +306,43 @@ function Auth()
   //================================================================================================  
 
   return (
-    <>
+<>
+<link rel="stylesheet" href="styles.css"></link>
+  <body className='entry-body'>
+    <div className="main">
+      <input className='signup-input' type="checkbox" id="chk" aria-hidden="true" />
+      <div className="signup">
+        <form>
+          <label htmlFor="chk" aria-hidden="true" className="signup-label">Sign up</label>
+          <input type="text" name="txt" placeholder="User name" required className="signup-input" />
+          <input type="email" name="email" placeholder="Email" required className="signup-input" />
+          <input type="password" name="pswd" placeholder="Password" required className="signup-input" />
+          <button className="signup-button">Sign up</button>
+        </form>
+      </div>
 
-      {showRegistration ? (
+      <div className="login">
+        <form>
+          <label htmlFor="chk" aria-hidden="true" className="signup-label login-label">Login</label>
+          <input type="email" name="email" placeholder="Nickname" className="signup-input" />
+          <input type="password" name="pswd" placeholder="Password" className="signup-input" />
+          <button className="signup-button">Login</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</>
+  );
+}
+
+export default Auth;
+
+
+
+
+
+      {/* {showRegistration ? (
         <div>
-          {/* <div className="background">
-            <div className="shape"></div>
-            <div className="shape"></div> 
-          </div> */}
           <form>
             <h3>Registration</h3>
             <label htmlFor="name">Name</label>
@@ -336,14 +365,11 @@ function Auth()
               <label htmlFor="teacher-checkbox">Are you a teacher?</label>
             </div>
             <button className="authbtn" onClick={handleRegistrationClick}>Register</button>
+            <button className="authbtn" onClick={ShowRegistrationPlateClick}>Login</button>
           </form>
         </div>
       ) : (
         <div>
-          {/* <div className="background">
-             <div className="shape"></div>
-            <div className="shape"></div> 
-          </div> */}
           <form>
             <h3>Sign in to your account</h3>
             <label htmlFor="username">Username</label>
@@ -356,11 +382,4 @@ function Auth()
             <button className="authbtn" onClick={ShowRegistrationPlateClick}>Registration</button>
           </form>
         </div>
-
-      )}
-
-    </>
-  );
-}
-
-export default Auth;
+      )} */}
