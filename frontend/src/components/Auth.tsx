@@ -312,19 +312,28 @@ function Auth()
         <input type="checkbox" id={style.chk} aria-hidden="true" />
         <div className={style.login}>
           <form>
-            <label className={style.label} htmlFor={style.chk} aria-hidden="true">Login</label>
-            <input className={style.input} type="email" name="email" placeholder="Email" required />
-            <input className={style.input} type="password" name="pswd" placeholder="Password" required />
-            <button className={style.button}>Login</button>
+            <label className={style.label} htmlFor={style.chk} aria-hidden="true" >Sign in</label>
+            <input className={style.input} type="login" name="login" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
+            <input className={style.input} type="password" name="pswd" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <button className={style.button} onClick={handleLoginClick}>Sign in</button>
           </form>
         </div>
         <div className={style.signup}>
           <form>
             <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign up</label>
-            <input className={style.input} type="text" name="txt" placeholder="User name" required />
-            <input className={style.input} type="email" name="email" placeholder="Email" required />
-            <input className={style.input} type="password" name="pswd" placeholder="Password" required />
-            <button className={style.button}>Sign up</button>
+            <input className={style.input} type="text" name="txt" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
+            <input className={style.input} type="text" name="txt" placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)} required />
+            <input className={style.input} type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <input className={style.input} type="login" name="login" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
+            <input className={style.input} type="password" name="pswd" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <div className={style.checkbox}>
+              <input className={style.checkboxInput} type="checkbox" id="teacherCheckbox" checked={isTeacher} onChange={handleCheckboxChange}/>
+              <label htmlFor="teacherCheckbox" className={style.checkboxLabel}>
+                <span className={style.checkboxCustom}></span>
+                <span className={style.checkboxText}>Are you a teacher?</span>
+              </label>
+            </div>
+            <button className={style.button} onClick={handleRegistrationClick}>Sign up</button>
           </form>
         </div>
       </div>
