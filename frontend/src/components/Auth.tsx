@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs'
-import '../styles/Auth.css';
-import '../styles/bg.css'
+import style from '../styles/Auth.module.css';
+import '../styles/bg.css';
 
 declare module 'bcryptjs';
 
@@ -306,31 +306,30 @@ function Auth()
   //================================================================================================  
 
   return (
-<>
-<link rel="stylesheet" href="styles.css"></link>
-  <body className='entry-body'>
-    <div className="AI-main">
-    <input className='AI-inputs' type="checkbox" id="chk" aria-hidden="true" />
-    <div className="AI-login">
-        <form>
-          <label htmlFor="chk" aria-hidden="true" className="AI-login-label">Login</label>
-          <input type="email" name="email" placeholder="Login" className="AI-inputs" />
-          <input type="password" name="pswd" placeholder="Password" className="AI-inputs" />
-          <button className="AI-buttons">Login</button>
-        </form>
+  <>
+    <body className={style.body}>
+      <div className={style.main}>
+        <input type="checkbox" id={style.chk} aria-hidden="true" />
+        <div className={style.login}>
+          <form>
+            <label className={style.label} htmlFor={style.chk} aria-hidden="true">Login</label>
+            <input className={style.input} type="email" name="email" placeholder="Email" required />
+            <input className={style.input} type="password" name="pswd" placeholder="Password" required />
+            <button className={style.button}>Login</button>
+          </form>
+        </div>
+        <div className={style.signup}>
+          <form>
+            <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign up</label>
+            <input className={style.input} type="text" name="txt" placeholder="User name" required />
+            <input className={style.input} type="email" name="email" placeholder="Email" required />
+            <input className={style.input} type="password" name="pswd" placeholder="Password" required />
+            <button className={style.button}>Sign up</button>
+          </form>
+        </div>
       </div>
-      <div className="AI-signup">
-        <form>
-          <label htmlFor="chk" aria-hidden="true" className="AI-signup-label">Sign up</label>
-          <input type="text" name="txt" placeholder="User name" required className="AI-inputs" />
-          <input type="email" name="email" placeholder="Email" required className="AI-inputs" />
-          <input type="password" name="pswd" placeholder="Password" required className="AI-inputs" />
-          <button className="AI-buttons">Sign up</button>
-        </form>
-      </div>
-    </div>
-  </body>
-</>
+    </body>
+  </>
   );
 }
 
