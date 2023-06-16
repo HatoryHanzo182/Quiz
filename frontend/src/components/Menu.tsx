@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { VscAccount,VscHome } from "react-icons/vsc";
 import User  from '../modules/UserDataModel';
 import '../styles/Menu.css';
-import '../styles/bg.css'
+import '../styles/bg.css';
 
 function Menu() 
 {

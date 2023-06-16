@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { VscAccount,VscHome } from "react-icons/vsc";
 import User from "../modules/UserDataModel";
 import user from '../img/user.png';
-// import '../styles/Profile.css';
-// import '../styles/bg.css';
+import '../styles/Profile.css';
+import '../styles/bg.css';
 
 function Profile() 
 {
@@ -48,7 +48,7 @@ function Profile()
    <div className="navbar">
       <a className='home' href='.' onClick={(event) => handleHomeClick(event)}><VscHome size={25}></VscHome></a>
     </div>
-    <div className="main">
+    <div className="main-profil">
       <div className="card-wrapper">
         <div className="card-header">
           <div className="pic"><img src={user} alt='user'></img></div>

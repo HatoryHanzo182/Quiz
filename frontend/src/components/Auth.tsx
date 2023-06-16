@@ -309,24 +309,23 @@ function Auth()
 <>
 <link rel="stylesheet" href="styles.css"></link>
   <body className='entry-body'>
-    <div className="main">
-      <input className='signup-input' type="checkbox" id="chk" aria-hidden="true" />
-      <div className="signup">
+    <div className="AI-main">
+    <input className='AI-inputs' type="checkbox" id="chk" aria-hidden="true" />
+    <div className="AI-login">
         <form>
-          <label htmlFor="chk" aria-hidden="true" className="signup-label">Sign up</label>
-          <input type="text" name="txt" placeholder="User name" required className="signup-input" />
-          <input type="email" name="email" placeholder="Email" required className="signup-input" />
-          <input type="password" name="pswd" placeholder="Password" required className="signup-input" />
-          <button className="signup-button">Sign up</button>
+          <label htmlFor="chk" aria-hidden="true" className="AI-login-label">Login</label>
+          <input type="email" name="email" placeholder="Login" className="AI-inputs" />
+          <input type="password" name="pswd" placeholder="Password" className="AI-inputs" />
+          <button className="AI-buttons">Login</button>
         </form>
       </div>
-
-      <div className="login">
+      <div className="AI-signup">
         <form>
-          <label htmlFor="chk" aria-hidden="true" className="signup-label login-label">Login</label>
-          <input type="email" name="email" placeholder="Nickname" className="signup-input" />
-          <input type="password" name="pswd" placeholder="Password" className="signup-input" />
-          <button className="signup-button">Login</button>
+          <label htmlFor="chk" aria-hidden="true" className="AI-signup-label">Sign up</label>
+          <input type="text" name="txt" placeholder="User name" required className="AI-inputs" />
+          <input type="email" name="email" placeholder="Email" required className="AI-inputs" />
+          <input type="password" name="pswd" placeholder="Password" required className="AI-inputs" />
+          <button className="AI-buttons">Sign up</button>
         </form>
       </div>
     </div>

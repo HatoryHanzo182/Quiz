@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import User from "../modules/UserDataModel";
 import '../styles/AnswerHistory.css';
-// import '../styles/Quiz.css';
-// import '../styles/bg.css';
+import '../styles/Quiz.css';
+import '../styles/bg.css';
 
 function AnswerHistory()
 {

@@ -4,8 +4,8 @@ import { VscAccount } from "react-icons/vsc";
 import User from '../modules/UserDataModel';
 import Result from '../modules/ResultModel';
 import axios from 'axios';
-// import '../styles/TeacherMenu.css';
-// import '../styles/bg.css'
+import '../styles/TeacherMenu.css';
+import '../styles/bg.css'
 
 function TeacherMenu()
 {
