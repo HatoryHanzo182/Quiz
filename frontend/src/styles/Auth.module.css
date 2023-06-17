@@ -95,6 +95,16 @@ button:hover {
 	transform: scale(.6);
 }
 
+.additionalText {
+	margin-top: 40px;
+	text-align: center;
+	color: #777;
+  }
+  
+  .additionalText p {
+	font-size: 14px;
+  }
+  
 #chk:checked ~ .signup {
 	transform: translateY(-660px);
 }

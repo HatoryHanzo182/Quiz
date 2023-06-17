@@ -308,36 +308,40 @@ function Auth()
   return (
   <>
     <body className={style.body}>
-      <div className={style.main}>
-        <input type="checkbox" id={style.chk} aria-hidden="true"/>
-        <div className={style.login}>
-          <form>
-            <label className={style.label} htmlFor={style.chk} aria-hidden="true" >Sign in</label>
-            <input className={style.input} type="login" name="login" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
-            <input className={style.input} type="password" name="pswd" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <button className={style.button} onClick={handleLoginClick}>Sign in</button>
-          </form>
+  <div className={style.main}>
+    <input type="checkbox" id={style.chk} aria-hidden="true"/>
+    <div className={style.login}>
+      <form>
+        <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign in</label>
+        <input className={style.input} type="login" name="login1" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
+        <input id="pswdi1" className={style.input} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <button className={style.button} onClick={handleLoginClick}>Sign in</button>
+        <div className={style.additionalText}>
+          <p>Ready to test your programming skills? Take our challenging quiz and assess your knowledge in various programming languages, algorithms, and coding concepts. Earn a score based on your performance and unlock new levels as you progress. You can even share your results with your mentor to showcase your progress and get valuable feedback. Join now and become a coding champion!</p>
         </div>
-        <div className={style.signup}>
-          <form>
-            <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign up</label>
-            <input className={style.input} type="text" name="txt" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-            <input className={style.input} type="text" name="txt" placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)} required />
-            <input className={style.input} type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            <input className={style.input} type="login" name="login" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
-            <input className={style.input} type="password" name="pswd" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <div className={style.checkbox}>
-              <input className={style.checkboxInput} type="checkbox" id="teacherCheckbox" checked={isTeacher} onChange={handleCheckboxChange}/>
-              <label htmlFor="teacherCheckbox" className={style.checkboxLabel}>
-                <span className={style.checkboxCustom}></span>
-                <span className={style.checkboxText}>Are you a teacher?</span>
-              </label>
-            </div>
-            <button className={style.button} onClick={handleRegistrationClick}>Sign up</button>
-          </form>
+      </form>
+    </div>
+    <div className={style.signup}>
+      <form>
+        <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign up</label>
+        <input className={style.input} type="text" name="txt" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
+        <input className={style.input} type="text" name="txt" placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)} required />
+        <input className={style.input} type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input className={style.input} type="login" name="login2" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
+        <input id="pswdi2" className={style.input} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <div className={style.checkbox}>
+          <input className={style.checkboxInput} type="checkbox" id="teacherCheckbox" checked={isTeacher} onChange={handleCheckboxChange}/>
+          <label htmlFor="teacherCheckbox" className={style.checkboxLabel}>
+            <span className={style.checkboxCustom}></span>
+            <span className={style.checkboxText}>Are you a teacher?</span>
+          </label>
         </div>
-        </div>
-    </body>
+        <button className={style.button} onClick={handleRegistrationClick}>Sign up</button>
+      </form>
+    </div>
+  </div>
+</body>
+
   </>
   );
 }
