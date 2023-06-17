@@ -309,7 +309,7 @@ function Auth()
   <>
     <body className={style.body}>
       <div className={style.main}>
-        <input type="checkbox" id={style.chk} aria-hidden="true" />
+        <input type="checkbox" id={style.chk} aria-hidden="true"/>
         <div className={style.login}>
           <form>
             <label className={style.label} htmlFor={style.chk} aria-hidden="true" >Sign in</label>
@@ -336,7 +336,7 @@ function Auth()
             <button className={style.button} onClick={handleRegistrationClick}>Sign up</button>
           </form>
         </div>
-      </div>
+        </div>
     </body>
   </>
   );
