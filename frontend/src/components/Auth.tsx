@@ -9,6 +9,27 @@ declare module 'bcryptjs';
 
 function Auth()
 {
+/*
+    * The Auth component is a form of user authentication and registration. 
+    * It contains state hooks for managing input field values (e.g., first name, last name, email, username, password, and teacher code) and
+    * for displaying validation error messages.
+    *
+    * The component handles click events on the "Login" and "Register" buttons. When you click on the "Login" button, the component sends
+    * a request to the server to check the user's login and password. In case of successful authentication, the user is redirected to the
+    * appropriate page. When you click on the "Register" button, the component checks the validity of the registration form fields and sends 
+    * the data to the server to create a new user.
+    *
+    * The component also handles the state change of the "Teacher" checkbox and automatically generates the teacher's code when it is activated.
+    * The hashPassword function is used to hash passwords.
+    *
+    * The IsValidRegistrationPanel, ValidName, ValidSurname, ValidEmail, ValidLogin, and ValidPass functions perform validation of the
+    * corresponding fields on the registration form and return a Boolean value based on the result of the validation.
+    *
+    * The Auth component uses the axios libraries to make HTTP requests to the server and bcrypt to hash passwords.
+    *
+    * The overall purpose of the Auth component is to provide secure authentication and registration of users to a web application.
+*/
+
   // Hooks.
   //================================================================================================
         // Getting data from fields.
@@ -18,15 +39,15 @@ function Auth()
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [teacher_code, setCode] = useState('null');
-
-        // Passing validity error messages.
+  
+  // Passing validity error messages.
   const [nameError, setNameError] = useState('');
   const [surnameError, setSurnameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [loginError, setLoginError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   
-  const [showRegistration, setShowRegistration] = useState(false);  // Button event handler opens registration window.
+  const [showSignUp, setShowSignUp] = useState(false);
   const [isTeacher, setIsChecked] = useState(false);  // Hook for defining teacher checkbox logic.
   
   const navigate = useNavigate();  // Page navigation hook.
@@ -97,11 +118,6 @@ function Auth()
 
   // Registration.
   //================================================================================================
-  const ShowRegistrationPlateClick = (event: any) =>  // Method shows registration layout.
-  {
-    event.preventDefault();
-    setShowRegistration(true);
-  };
 
   const handleRegistrationClick = async (event: any) => // Register button event.
   {
@@ -121,8 +137,9 @@ function Auth()
         setEmail('');
         setLogin('');
         setPassword('');
-        setShowRegistration(false);
         setCode('null');
+        setIsChecked(false);
+        setShowSignUp(false);
         
         alert("Welcome");
       } 
@@ -307,95 +324,55 @@ function Auth()
 
   return (
   <>
-  
+    {/*User login and registration page content.*/}
     <body className={style.body}>
-  <div className={style.main}>
-    <input type="checkbox" id={style.chk} aria-hidden="true"/>
-    <div className={style.login}>
-      <form>
-        <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign in</label>
-        <input className={style.input} type="login" name="login1" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
-        <input id="pswdi1" className={style.input} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button className={style.button} onClick={handleLoginClick}>Sign in</button>
-        <div className={style.additionalText}>
-          <p>
-            Ready to test your programming skills? Take our challenging quiz and assess your knowledge in various programming languages, 
-            algorithms, and coding concepts. Earn a score based on your performance and unlock new levels as you progress. You can even 
-            share your results with your mentor to showcase your progress and get valuable feedback. Join now and become a coding champion!
-          </p>
+      <div className={style.main}>
+        <input type="checkbox" id={style.chk} checked={showSignUp} onChange={() => setShowSignUp(!showSignUp)} aria-hidden="true"/>
+        {/* Sign in */}
+        <div className={style.login}>
+          <form>
+            <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign in</label>
+            <input className={style.input} type="login" name="login1" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
+            {loginError && <span className={style.error}>{loginError}</span>}
+            <input id="pswdi1" className={style.input} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            {passwordError && <span className={style.error}>{passwordError}</span>}
+            <button className={style.button} onClick={handleLoginClick}>Sign in</button>
+            <div className={style.additionalText}>
+              <p>
+                Ready to test your programming skills? Take our challenging quiz and assess your knowledge in various programming languages, 
+                algorithms, and coding concepts. Earn a score based on your performance and unlock new levels as you progress. You can even 
+                share your results with your mentor to showcase your progress and get valuable feedback. Join now and become a coding champion!
+              </p>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
-    <div className={style.signup}>
-      <form>
-        <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign up</label>
-        <input className={style.input} type="text" name="txt" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-        <input className={style.input} type="text" name="txt" placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)} required />
-        <input className={style.input} type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input className={style.input} type="login" name="login2" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
-        <input id="pswdi2" className={style.input} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <div className={style.checkbox}>
-          <input className={style.checkboxInput} type="checkbox" id="teacherCheckbox" checked={isTeacher} onChange={handleCheckboxChange}/>
-          <label htmlFor="teacherCheckbox" className={style.checkboxLabel}>
-            <span className={style.checkboxCustom}></span>
-            <span className={style.checkboxText}>Are you a teacher?</span>
-          </label>
+        {/* Sign up */}
+        <div className={style.signup}>
+          <form>
+            <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign up</label>
+            <input className={style.input} type="text" name="txt" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
+            {nameError && <span className={style.error}>{nameError}</span>}
+            <input className={style.input} type="text" name="txt" placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)} required />
+            {surnameError && <span className={style.error}>{surnameError}</span>}
+            <input className={style.input} type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            {emailError && <span className={style.error}>{emailError}</span>}
+            <input className={style.input} type="login" name="login2" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
+            {loginError && <span className={style.error}>{loginError}</span>}
+            <input id="pswdi2" className={style.input} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            {passwordError && <span className={style.error}>{passwordError}</span>}
+            <div className={style.checkbox}>
+              <input className={style.checkboxInput} type="checkbox" id="teacherCheckbox" checked={isTeacher} onChange={handleCheckboxChange}/>
+              <label htmlFor="teacherCheckbox" className={style.checkboxLabel}>
+                <span className={style.checkboxCustom}></span>
+                <span className={style.checkboxText}>Are you a teacher?</span>
+              </label>
+            </div>
+            <button className={style.button} onClick={handleRegistrationClick}>Sign up</button>
+          </form>
         </div>
-        <button className={style.button} onClick={handleRegistrationClick}>Sign up</button>
-      </form>
-    </div>
-  </div>
-</body>
-
-  </>
-  );
+      </div>
+    </body>
+  </>);
 }
 
 export default Auth;
-
-
-
-
-
-      {/* {showRegistration ? (
-        <div>
-          <form>
-            <h3>Registration</h3>
-            <label htmlFor="name">Name</label>
-            <input type="text" placeholder="real name" value={name} onChange={(e) => setName(e.target.value)}/>
-            {nameError && <span className="error">{nameError}</span>}
-            <label htmlFor="surname">Surname</label>
-            <input type="text" placeholder="real surname" value={surname} onChange={(e) => setSurname(e.target.value)}/>
-            {surnameError && <span className="error">{surnameError}</span>}
-            <label htmlFor="email">Email</label>
-            <input type="text" placeholder="@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
-            {emailError && <span className="error">{emailError}</span>}
-            <label htmlFor="login">Login</label>
-            <input type="text" placeholder="login" value={login} onChange={(e) => setLogin(e.target.value)} />
-            {loginError && <span className="error">{loginError}</span>}
-            <label htmlFor="password">Password</label>
-            <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            {passwordError && <span className="error">{passwordError}</span>}
-            <div className="checkbox">
-              <input type="checkbox" id="teacher-checkbox" checked={isTeacher} onChange={handleCheckboxChange}/>
-              <label htmlFor="teacher-checkbox">Are you a teacher?</label>
-            </div>
-            <button className="authbtn" onClick={handleRegistrationClick}>Register</button>
-            <button className="authbtn" onClick={ShowRegistrationPlateClick}>Login</button>
-          </form>
-        </div>
-      ) : (
-        <div>
-          <form>
-            <h3>Sign in to your account</h3>
-            <label htmlFor="username">Username</label>
-            <input type="text" placeholder="Login" id="username" value={login} onChange={(e) => setLogin(e.target.value)} />
-            {loginError && <span className="error">{loginError}</span>}
-            <label htmlFor="password">Password</label>
-            <input type="password" placeholder="Password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            {passwordError && <span className="error">{passwordError}</span>}
-            <button className="authbtn" onClick={handleLoginClick}>Log In</button>
-            <button className="authbtn" onClick={ShowRegistrationPlateClick}>Registration</button>
-          </form>
-        </div>
-      )} */}
