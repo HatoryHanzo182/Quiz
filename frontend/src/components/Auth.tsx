@@ -307,6 +307,7 @@ function Auth()
 
   return (
   <>
+  
     <body className={style.body}>
   <div className={style.main}>
     <input type="checkbox" id={style.chk} aria-hidden="true"/>
@@ -317,7 +318,11 @@ function Auth()
         <input id="pswdi1" className={style.input} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button className={style.button} onClick={handleLoginClick}>Sign in</button>
         <div className={style.additionalText}>
-          <p>Ready to test your programming skills? Take our challenging quiz and assess your knowledge in various programming languages, algorithms, and coding concepts. Earn a score based on your performance and unlock new levels as you progress. You can even share your results with your mentor to showcase your progress and get valuable feedback. Join now and become a coding champion!</p>
+          <p>
+            Ready to test your programming skills? Take our challenging quiz and assess your knowledge in various programming languages, 
+            algorithms, and coding concepts. Earn a score based on your performance and unlock new levels as you progress. You can even 
+            share your results with your mentor to showcase your progress and get valuable feedback. Join now and become a coding champion!
+          </p>
         </div>
       </form>
     </div>
