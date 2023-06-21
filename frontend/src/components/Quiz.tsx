@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { VscAccount,VscHome } from "react-icons/vsc";
+import { VscHome } from "react-icons/vsc";
 import axios from 'axios';
 import User from "../modules/UserDataModel";
 import Question from '../modules/QuestionModel'; 

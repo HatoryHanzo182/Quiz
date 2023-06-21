@@ -8,26 +8,26 @@ declare module 'bcryptjs';
 
 function Auth()
 {
-/*
-    * The Auth component is a form of user authentication and registration. 
-    * It contains state hooks for managing input field values (e.g., first name, last name, email, username, password, and teacher code) and
-    * for displaying validation error messages.
-    *
-    * The component handles click events on the "Login" and "Register" buttons. When you click on the "Login" button, the component sends
-    * a request to the server to check the user's login and password. In case of successful authentication, the user is redirected to the
-    * appropriate page. When you click on the "Register" button, the component checks the validity of the registration form fields and sends 
-    * the data to the server to create a new user.
-    *
-    * The component also handles the state change of the "Teacher" checkbox and automatically generates the teacher's code when it is activated.
-    * The hashPassword function is used to hash passwords.
-    *
-    * The IsValidRegistrationPanel, ValidName, ValidSurname, ValidEmail, ValidLogin, and ValidPass functions perform validation of the
-    * corresponding fields on the registration form and return a Boolean value based on the result of the validation.
-    *
-    * The Auth component uses the axios libraries to make HTTP requests to the server and bcrypt to hash passwords.
-    *
-    * The overall purpose of the Auth component is to provide secure authentication and registration of users to a web application.
-*/
+  /*
+      * The Auth component is a form of user authentication and registration. 
+      * It contains state hooks for managing input field values (e.g., first name, last name, email, username, password, and teacher code) and
+      * for displaying validation error messages.
+      *
+      * The component handles click events on the "Login" and "Register" buttons. When you click on the "Login" button, the component sends
+      * a request to the server to check the user's login and password. In case of successful authentication, the user is redirected to the
+      * appropriate page. When you click on the "Register" button, the component checks the validity of the registration form fields and sends 
+      * the data to the server to create a new user.
+      *
+      * The component also handles the state change of the "Teacher" checkbox and automatically generates the teacher's code when it is activated.
+      * The hashPassword function is used to hash passwords.
+      *
+      * The IsValidRegistrationPanel, ValidName, ValidSurname, ValidEmail, ValidLogin, and ValidPass functions perform validation of the
+      * corresponding fields on the registration form and return a Boolean value based on the result of the validation.
+      *
+      * The Auth component uses the axios libraries to make HTTP requests to the server and bcrypt to hash passwords.
+      *
+      * The overall purpose of the Auth component is to provide secure authentication and registration of users to a web application.
+  */
 
   // Hooks.
   //================================================================================================

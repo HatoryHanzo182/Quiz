@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { VscAccount,VscHome } from "react-icons/vsc";
+import { VscAccount } from "react-icons/vsc";
 import User  from '../modules/UserDataModel';
 import style from  '../styles/Menu.module.css';
 
@@ -36,6 +36,7 @@ function Menu()
   }, []);
 
   const handleQuizClick = (quiz_id: string) => { navigate(`/Menu/Quiz/${quiz_id}`); };  // Quiz transition event.
+  
   const handleProfileClick = (event: any) =>  // Profile transition event. 
   {
     event.preventDefault(); 
@@ -45,9 +46,11 @@ function Menu()
 
   return (
   <>
-    <div className={style.navbar}>
+    {/*Menu content with quizzes.*/}
+    <div className={style.navbar}>  {/*Profile.*/}
       <a className={style.profile} href="." onClick={(event) => handleProfileClick(event)}><VscAccount size={25}></VscAccount></a>
     </div>
+    {/*List of quizzes.*/}
     <div className={style["ag-format-container"]}>
       <div className={style["ag-courses_box"]}>
         <div className={style["ag-courses_item"]}>

@@ -1,0 +1,150 @@
+/*Profile.*/
+
+/*Basic markup.*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+  
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+/*Profile content markup.*/  
+.main-profil {
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center;
+    height: 100vh;
+}
+  
+.card-wrapper {
+    margin: 0 10px;
+    width: 400px; 
+    border-radius: 08px;
+    background-color: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    overflow: hidden;
+}
+  
+.card-header {
+    padding: 60px 40px;
+}
+
+/*Picture style.*/  
+.pic {
+    display: inline-block;
+    padding: 5px;
+}
+  
+.pic img {
+    display: block;
+    margin-top: -50px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+/*Style for given users.*/  
+.name {
+    margin: 20px 0px;
+    font-weight: 500;
+    font-size: 25px;
+    color: white;
+}
+
+/*Style for exit button.*/
+.aExit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    padding: 20px 70px;
+    width: 200px;
+    position: relative;
+    white-space: nowrap;
+    border-radius: 40px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.aExit span {
+    position: relative;
+    font-family: Arial;
+    color: #fff;
+    letter-spacing: 8px;
+    z-index: 1;
+}
+  
+.aExit .liquid {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: -80px;
+    left: 0;
+    background: #4973ff;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+    transition: .5s;
+}
+  
+.aExit .liquid::after, .aExit .liquid::before {
+    width: 200%;
+    height: 200%;
+    left: 50%;
+    top: 0;
+    position: absolute;
+    background: #000;
+    transform: translate(-50%, -75%);
+    content: '';
+}
+  
+.aExit .liquid::before {
+    border-radius: 45%;
+    background: rgba(20, 20, 20, 1);
+    animation: animate 5s linear infinite;
+}
+  
+.aExit .liquid::after {
+    border-radius: 40%;
+    background: rgba(20, 20, 20, .5);
+    animation: animate 10s linear infinite;
+}
+  
+.aExit:hover .liquid {
+    top: -120px;
+}
+
+/*Scroll.*/
+::-webkit-scrollbar {
+    display: none;
+}
+  
+/*Defines an animation named animate*/
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -75%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
+
+/*Media query.*/
+@media (max-width: 480px) {
+    .main-profil {
+        margin: 0;
+    }
+    .card-wrapper {
+        margin: 0;
+        width: 100%;
+    }
+}

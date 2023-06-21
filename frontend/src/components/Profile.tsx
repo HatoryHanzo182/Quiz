@@ -1,13 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { VscAccount,VscHome } from "react-icons/vsc";
+import { VscHome } from "react-icons/vsc";
 import User from "../modules/UserDataModel";
 import user from '../img/user.png';
-import '../styles/Profile.css';
+import style from '../styles/Profile.module.css';
 
 function Profile() 
 {
+  /*
+      * The Profile component displays user profile information and provides navigation and logout functionality.
+      *
+      * The handleExitClick function removes the user data from the session storage, clears the browsing history,
+      * and navigates the user back to the home page ("/").
+      *
+      * The handleHomeClick function is triggered when the home link is clicked. It navigates the user to the
+      * appropriate menu page based on the user type.
+      *
+      * The component renders the user profile content, including the home link, profile panel, and an exit button.
+      * The profile panel displays the user's profile picture, name, login, and email.
+ */
+
   const [userData, setUserData] = useState<User>();  // Hook to get user data. 
+  const navigate = useNavigate();
 
   useEffect(() =>  // The hook runs after the page is loaded.
   {
@@ -22,7 +36,6 @@ function Profile()
     ariownUserData();
   }, []);
 
-  const navigate = useNavigate();
   const handleExitClick = (event: React.MouseEvent<HTMLAnchorElement>) => 
   {
     event.preventDefault();
@@ -44,22 +57,24 @@ function Profile()
 
   return (
   <>
-   <div className="navbar">
-      <a className='home' href='.' onClick={(event) => handleHomeClick(event)}><VscHome size={25}></VscHome></a>
+    {/*Profile content*/}
+    <div className={style.navbar}>  {/*Home.*/}
+      <a className={style.home} href='.' onClick={(event) => handleHomeClick(event)}><VscHome size={25}></VscHome></a>
     </div>
-    <div className="main-profil">
-      <div className="card-wrapper">
-        <div className="card-header">
-          <div className="pic"><img src={user} alt='user'></img></div>
-          <h3 className='name'>{userData?.name} {userData?.surname}</h3>
-          <h3 className="name">{userData?.login}</h3>
-          <h3 className="name">{userData?.email}</h3>
+    {/*profile panel.*/}
+    <div className={style["main-profil"]}>
+      <div className={style["card-wrapper"]}>
+        <div className={style["card-header"]}>
+          <div className={style.pic}><img src={user} alt='user'></img></div>
+          <h3 className={style.name}>{userData?.name} {userData?.surname}</h3>
+          <h3 className={style.name}>{userData?.login}</h3>
+          <h3 className={style.name}>{userData?.email}</h3>
         </div>
-        <a href="." className='aExit' onClick = {handleExitClick}>
-      <span>Exit</span>
-      <div className="liquid"></div>
-    </a>
-
+        {/*Exit button.*/}
+        <a href="." className={style.aExit} onClick={handleExitClick}>
+          <span>Exit</span>
+          <div className={style.liquid}></div>
+        </a>
       </div>
     </div>
   </>)
