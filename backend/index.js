@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import connection_string from './сonnection.js';
 import UserModel from './models/UserModel.js';
 import QuizModel from './models/QuizModel.js';
 import DataResultModel from './models/DataResultModel.js';
@@ -35,7 +36,7 @@ app.use((req, res, next) =>  // Middleware for handling CORS.
   next();
 });
 
-const DB_URL = "mongodb+srv://scrinnpowerapp:s1o1yNojqIiHTyRg@quizcluster.plcezio.mongodb.net/QuizDB?retryWrites=true&w=majority";
+const DB_URL = connection_string;  //"mongodb+srv://g@quizcluster.plcezio.mongodb.net/?retryWrites=true&w=majority";
 const PORT =  3000
 
 // QUIZ REQUESTS.
