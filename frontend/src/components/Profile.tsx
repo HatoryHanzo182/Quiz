@@ -4,7 +4,6 @@ import { VscAccount,VscHome } from "react-icons/vsc";
 import User from "../modules/UserDataModel";
 import user from '../img/user.png';
 import '../styles/Profile.css';
-import '../styles/bg.css';
 
 function Profile() 
 {

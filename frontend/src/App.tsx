@@ -5,6 +5,7 @@ import TeacherMenu from './components/TeacherMenu';
 import Profile from './components/Profile';
 import Quiz from './components/Quiz';
 import AnswerHistory from './components/AnswerHistory';
+import './styles/bg.css';
 
 function App() 
 {

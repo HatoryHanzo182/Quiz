@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import bcrypt from 'bcryptjs'
 import style from '../styles/Auth.module.css';
-import '../styles/bg.css';
 
 declare module 'bcryptjs';
 
