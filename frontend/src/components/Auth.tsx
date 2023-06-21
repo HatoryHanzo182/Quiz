@@ -331,11 +331,11 @@ function Auth()
         <div className={style.login}>
           <form>
             <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign in</label>
-            <input className={style.input} type="login" name="login1" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
+            <input className={style.inputA} type="login" name="login1" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
             {loginError && <span className={style.error}>{loginError}</span>}
-            <input id="pswdi1" className={style.input} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <input id="pswdi1" className={style.inputA} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             {passwordError && <span className={style.error}>{passwordError}</span>}
-            <button className={style.button} onClick={handleLoginClick}>Sign in</button>
+            <button className={style.buttonA} onClick={handleLoginClick}>Sign in</button>
             <div className={style.additionalText}>
               <p>
                 Ready to test your programming skills? Take our challenging quiz and assess your knowledge in various programming languages, 
@@ -349,15 +349,15 @@ function Auth()
         <div className={style.signup}>
           <form>
             <label className={style.label} htmlFor={style.chk} aria-hidden="true">Sign up</label>
-            <input className={style.input} type="text" name="txt" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
+            <input className={style.inputA} type="text" name="txt" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
             {nameError && <span className={style.error}>{nameError}</span>}
-            <input className={style.input} type="text" name="txt" placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)} required />
+            <input className={style.inputA} type="text" name="txt" placeholder="Surname" value={surname} onChange={(e) => setSurname(e.target.value)} required />
             {surnameError && <span className={style.error}>{surnameError}</span>}
-            <input className={style.input} type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <input className={style.inputA} type="email" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             {emailError && <span className={style.error}>{emailError}</span>}
-            <input className={style.input} type="login" name="login2" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
+            <input className={style.inputA} type="login" name="login2" placeholder="Login" value={login} onChange={(e) => setLogin(e.target.value)} required />
             {loginError && <span className={style.error}>{loginError}</span>}
-            <input id="pswdi2" className={style.input} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <input id="pswdi2" className={style.inputA} type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             {passwordError && <span className={style.error}>{passwordError}</span>}
             <div className={style.checkbox}>
               <input className={style.checkboxInput} type="checkbox" id="teacherCheckbox" checked={isTeacher} onChange={handleCheckboxChange}/>
@@ -366,7 +366,7 @@ function Auth()
                 <span className={style.checkboxText}>Are you a teacher?</span>
               </label>
             </div>
-            <button className={style.button} onClick={handleRegistrationClick}>Sign up</button>
+            <button className={style.buttonA} onClick={handleRegistrationClick}>Sign up</button>
           </form>
         </div>
       </div>

@@ -1,0 +1,49 @@
+/*AnswerHistory*/
+
+/*Main content markup.*/
+.card {
+  margin: auto;
+  margin-top: 10px;
+  width: 120vh;
+  height: 700px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(6px);
+  overflow: auto;
+  text-align: center;
+}
+
+.card-content {
+  padding: 1px;
+}
+
+.card::-webkit-scrollbar {
+  width: 8px;
+  margin-inline-end: 3px;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background: #1e1e1e;
+  border-radius: 10px;
+}
+
+.card::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+/*Right wrong.*/
+.correct {
+  background-color: rgba(42, 153, 24, 0.3);
+}
+
+.incorrect {
+  background-color: rgba(153, 24, 24, 0.5);
+}
+
+/* Media for responsive styles for different devices. */
+@media (max-width: 768px) {
+  .card {
+    width: 90vw;
+    height: auto;
+  }
+}

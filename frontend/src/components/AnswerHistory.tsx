@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import User from "../modules/UserDataModel";
-import '../styles/AnswerHistory.css';
-import '../styles/Quiz.css';
+import style from '../styles/AnswerHistory.module.css';
 
 function AnswerHistory()
 {
@@ -33,27 +32,26 @@ function AnswerHistory()
 
         ariownUserData();
         pullHistory();
-    })
+    }, [])
 
     return (
     <>
-      <div className="card">
+      {/*Response story content.*/}
+      <div className={style.card}>
         <h1>Answers</h1>
-  <div className="card-content">
-    {answerHistory.map((answer, index) => (
-      <div key={index}>
-        <hr />
-        <br />
-        <p>{answer.question}</p>
-        <p className={answer.userAnswer === answer.correctAnswer ? "correct" : "incorrect"}>
-          Your answer: {answer.userAnswer}
-        </p>
-        <p className="correct">Correct answer: {answer.correctAnswer}</p>
-        <br />
+        <div className={style['card-content']}>{answerHistory.map((answer, index) => (
+          <div key={index}>
+            <hr />
+            <br />
+            <p>{answer.question}</p>
+            <p className={answer.userAnswer === answer.correctAnswer ? style.correct : style.incorrect}>
+              Your answer: {answer.userAnswer}
+            </p>
+            <p className={style.correct}>Correct answer: {answer.correctAnswer}</p>
+            <br />
+          </div>))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
     </>)
 }
 
