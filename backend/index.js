@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import connection_string from './сonnection.js';
+import connection_string from './connection.js';
 import UserModel from './models/UserModel.js';
 import QuizModel from './models/QuizModel.js';
 import DataResultModel from './models/DataResultModel.js';
