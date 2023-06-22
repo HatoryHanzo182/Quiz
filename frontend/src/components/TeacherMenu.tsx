@@ -8,6 +8,12 @@ import style from '../styles/TeacherMenu.module.css';
 
 function TeacherMenu() 
 {
+  /*
+      * The TeacherMenu component displays the teacher's menu, including the profile icon, the teacher code, and the list of student results.
+      * It fetches the user data and the results from the server, and allows the teacher to select a student and view their quiz history.
+      * The component provides functionality to mark a student's result as verified.
+      * If there are no results available, a message is displayed.
+  */
   const [userData, setUserData] = useState<User>();
   const [resultsQuizzes, setResultsQuizzes] = useState<Result[]>([]);
   const [selectedStudent, setSelectedStudent] = useState<Result | null>(null);
@@ -95,7 +101,6 @@ function TeacherMenu()
       </>
     );
   }
-
 
   return (
   <>
