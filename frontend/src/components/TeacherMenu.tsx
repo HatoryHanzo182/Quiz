@@ -99,8 +99,10 @@ function TeacherMenu()
 
   return (
   <>
+    {/*Markup with a table of results and and passing history.*/}
     <div className={style.container}>
       <div className={style.navbar}>
+        {/*Profile exit icon.*/}
         <a className={style.profile} href="." onClick={handleProfileClick}>
           <VscAccount size={25} />
         </a>
@@ -110,6 +112,7 @@ function TeacherMenu()
           <div className={style.content}>
             <h1 className={userData && userData.teacher_code.toString()}>Teacher code: {userData && userData.teacher_code}</h1>
             <div className={style.tableWrapper}>
+              {/*Results table.*/}
               <table>
                 <thead>
                   <tr>
@@ -138,6 +141,7 @@ function TeacherMenu()
             </div>
           </div>
         </div>
+        {/*History panel.*/}
         <div className={style['quiz-history-panel']}>
           {selectedStudent ? (
             <div className={style['quiz-history']}>
