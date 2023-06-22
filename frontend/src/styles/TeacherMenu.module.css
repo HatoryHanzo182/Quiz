@@ -1,0 +1,145 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.mycent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+.container1 {
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 25px;
+  padding: 10px;
+  max-width: 100%;
+  height: auto;
+  max-height: 95vh;
+  overflow: auto;
+}
+
+.tableWrapper {
+  overflow: auto;
+  max-height: 70vh;
+  margin: 20px 0;
+}
+
+table {
+  margin: 0 auto;
+  width: 100%;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 14px;
+  border-radius: 10px;
+  border-spacing: 0;
+  text-align: center;
+}
+
+th {
+  background: #000000;
+  color: white;
+  padding: 10px 30px;
+}
+
+th,
+td {
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: rgb(0, 0, 0);
+}
+
+th:first-child,
+td:first-child {
+  text-align: left;
+}
+
+th:first-child {
+  border-top-left-radius: 10px;
+}
+
+th:last-child {
+  border-top-right-radius: 10px;
+  border-right: none;
+}
+
+td {
+  padding: 10px 20px;
+  background: #ffffff;
+  color: #000000;
+}
+
+tr:last-child td:first-child {
+  border-radius: 0 0 0 10px;
+}
+
+tr:last-child td:last-child {
+  border-radius: 0 0 10px 0;
+}
+
+tr td:last-child {
+  border-right: none;
+}
+
+.quiz-history-panel {
+  flex-grow: 1;
+  margin: 10px;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(6px);
+  border-radius: 25px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.quiz-history {
+  height: 600px;
+}
+
+.quiz-history::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 30%;
+}
+
+.quiz-history::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 4px;
+}
+
+/* Style for the new result */
+.student-cell {
+  position: relative;
+}
+
+.new-result-label {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  background-color: #ff0000;
+  color: #ffffff;
+  margin-right: 10px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Right wrong */
+.correct {
+  background-color: rgba(42, 153, 24, 0.3);
+}
+
+.incorrect {
+  background-color: rgba(153, 24, 24, 0.5);
+}
